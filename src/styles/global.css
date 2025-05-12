@@ -1,0 +1,51 @@
+@import "./tailwind.css";
+
+* {
+  @apply border-border box-border;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply m-0 min-h-screen p-0;
+  @apply font-sans text-base leading-7 tracking-normal antialiased;
+  @apply bg-page text-second;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  @apply text-heading font-serif font-bold;
+}
+
+* {
+  --scrollbar-size: 16px;
+  --scrollbar-size-min: 44px;
+  --scrollbar-color: var(--gray-200);
+  scrollbar-color: var(--scrollbar-color) transparent;
+  /* firefox */
+  scrollbar-width: thin;
+}
+
+@layer utilities {
+  .bg-page {
+    background-color: var(--page-background);
+  }
+
+  .text-second {
+    color: var(--text-second);
+  }
+
+  .border-border {
+    border-color: var(--border);
+  }
+
+  .text-heading {
+  }
+}
