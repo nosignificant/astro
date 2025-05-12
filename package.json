@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.6",
+    "@astrojs/react": "^4.2.7",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.3.1",
     "@astrojs/ts-plugin": "^1.10.4",
     "astro": "^5.7.12",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
