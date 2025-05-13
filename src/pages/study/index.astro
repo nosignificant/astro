@@ -1,12 +1,12 @@
 ---
 import MainLayout from "../../layouts/main-layout.astro";
 
-const posts = Object.entries(
-  import.meta.glob("../../content/study/**/*.md", { eager: true })
-).map(([path, module]: [string, any]) => {
-  const slug = path.replace("../../content/study/", "").replace(/\.md$/, "");
+const posts = Object.keys(
+  import.meta.glob("./*/index.astro", { eager: true })
+).map((path: string) => {
+  const slug = path.replace("./", "").replace("/index.astro", "");
   return {
-    title: module.frontmatter.title,
+    title: slug,
     url: `/study/${slug}`,
   };
 });
