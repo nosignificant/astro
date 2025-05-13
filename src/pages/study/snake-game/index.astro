@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../../../layouts/main-layout.astro";
-import Notes from "./snake-game.mdx"; // ⬅️ mdx 설명 파일
+import Notes from "./snake-game.md"; // ⬅️ mdx 설명 파일
 import SnakeGame from "./SnakeGame"; // ⬅️ canvas / JS 결과물 래핑한 React 컴포넌트
 const title = "Snake Game";
 ---
@@ -9,12 +9,9 @@ const title = "Snake Game";
   <section class="max-w-content mx-auto py-8">
     <h1 class="text-2xl font-bold mb-2">{title}</h1>
 
-    <!-- ✅ JS 게임 결과물 담는 영역 -->
     <div class="border rounded-lg overflow-hidden h-96 mb-10">
       <SnakeGame />
     </div>
-
-    <!-- ✅ MDX 설명 영역 -->
     <article class="prose">
       <Notes />
     </article>
