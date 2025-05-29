@@ -11,13 +11,15 @@ export async function getStaticPaths() {
       props: {
         title: slug,
         Content: module.default,
+        description: module.frontmatter.description,
       },
     };
   });
 };
-const { title, Content } = Astro.props;
+const { title, Content, description } = Astro.props;
+
 ---
 
-<MainLayout pageTitle={title}>
+<MainLayout pageTitle={title} description={description}>
   <Content />
 </MainLayout>

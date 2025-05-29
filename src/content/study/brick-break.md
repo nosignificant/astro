@@ -44,6 +44,7 @@ if (
 이런거 정말 귀찮은 일이네
 
 - 코드보기
+
   ```jsx
   let canvas = document.getElementById("game"),
     ctx = canvas.getContext("2d"),

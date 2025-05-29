@@ -8,22 +8,23 @@ export async function getStaticPaths() {
   return Object.entries(modules).map(([path, module]: [string, any]) => {
     const slug = path.replace("../../content/note/", "").replace(/\.md$/, "");
 
-    console.log(slug);
 
     return {
       params: { slug },
       props: {
         title: slug,
         Content: module.default,
+                description: module.frontmatter.description,
+
       },
     };
   });
 }
 
-const { title, Content } = Astro.props;
+const { title, Content, description } = Astro.props;
 ---
 
-<MainLayout pageTitle={title}>
+<MainLayout pageTitle={title} description={description}>
   <Content />
   <FooterNavi/>
 </MainLayout>
