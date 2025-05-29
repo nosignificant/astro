@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css";
-import MainLayout from "../layouts/main-layout.astro";
+import Footer from "../components/Footer.astro";
 const pageTitle = "nosignificant";
 //나중에 만들면 여기 제목 없애기
 ---
@@ -13,11 +13,30 @@ const pageTitle = "nosignificant";
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
   </head>
-  <body>
-    <MainLayout pageTitle={pageTitle}>
-      <div>
+<body class="flex justify-center">
+<div class="w-full max-w-4xl px-[100px]">
+          <div class="mt-[100px]"></div>  
+          <a href="/">nosignificant</a>
+          <main>
+                  <div>
   안녕하세요. 뭐가 올라올지 모른다.
 </div>
-    </MainLayout>
+        <div class="flex flex-col">
+  <div>
+      <div>
+    <a class="underline" href="/study"> 공부다. </a>
+  </div>
+    <a class="underline" href="/note"> 노트다. </a>
+  </div>
+
+  <div>
+<a class="underline" href="/work"> 아마 작업물이다. </a>
+
+  </div>
+</div>
+          </main>
+<Footer />
+      </div>
   </body>
 </html>
+
