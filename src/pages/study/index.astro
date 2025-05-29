@@ -1,24 +1,30 @@
 ---
 import MainLayout from "../../layouts/main-layout.astro";
+import '../../styles/global.css'
+
 const pageTitle = 'study';
+const description = 'js, frontend 스터디 기록';
 const posts = Object.keys(
-  import.meta.glob("./*/index.astro", { eager: true })
+   import.meta.glob("../../content/study/**/*.md", { eager: true })
 ).map((path: string) => {
-  const slug = path.replace("./", "").replace("/index.astro", "");
+    const slug = path.replace("../../content/study/", "").replace(/\.md$/, "");
   return {
     title: slug,
     url: `/study/${slug}`,
-  };
+    jsurl: `/study/${slug}/forJS`,
+
+};
 });
 ---
 
-<MainLayout pageTitle={pageTitle}>
-  <ul class="space-y-2">
+<MainLayout pageTitle={pageTitle} description={description}>
+  <ul>
     {
-      posts.map(({ url, title }) => (
-        <li>
-          <a href={url}>{title}</a>
-        </li>
+      posts.map(({ url, title,jsurl }) => (
+        <div class="flex flex-row justify-between hover:bg-gray-200">
+                    <a  href={url}>{title}</a>
+          <a class="linkButt" href={jsurl}>link</a>
+        </div>
       ))
     }
   </ul>

@@ -1,15 +1,11 @@
 ---
 import MainLayout from "../../layouts/main-layout.astro";
-import FooterNavi from "../../components/FooterNavi.astro";
 export async function getStaticPaths() {
-  const modules = import.meta.glob("../../content/note/**/*.md", {
+  const modules = import.meta.glob("../../content/study/**/*.md", {
     eager: true,
   });
   return Object.entries(modules).map(([path, module]: [string, any]) => {
-    const slug = path.replace("../../content/note/", "").replace(/\.md$/, "");
-
-    console.log(slug);
-
+    const slug = path.replace("../../content/study/", "").replace(/\.md$/, "");
     return {
       params: { slug },
       props: {
@@ -18,12 +14,10 @@ export async function getStaticPaths() {
       },
     };
   });
-}
-
+};
 const { title, Content } = Astro.props;
 ---
 
 <MainLayout pageTitle={title}>
   <Content />
-  <FooterNavi/>
 </MainLayout>

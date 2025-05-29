@@ -6,6 +6,7 @@ import BaseHead from "../components/BaseHead.astro";
 import "../styles/global.css";
 
 const { pageTitle }= Astro.props;
+const { description } =Astro.props;
 ---
 
 <html lang="en">
@@ -14,9 +15,10 @@ const { pageTitle }= Astro.props;
   </head>
 <body class="flex justify-center">
 <div class="w-full max-w-4xl px-[100px]">
-            <div class="mt-[100px]"></div>  
-          <h2 class="mb-2">{pageTitle}</h1>
-  <Navigation class="mb-2"/>
+          <div class="mt-[100px]"></div>  
+          <h2 class="mb-2">{pageTitle}</h2>
+           <div>{description }</div>
+          <Navigation class="mb-2"/>
           <main>
         <slot/>
           </main>

@@ -11,8 +11,11 @@
   font-family: "ChosunGu", sans-serif;
   line-height: 2;
   color: black;
+  font-size: 1rem;
+}
+
+body {
   background-color: rgb(247, 247, 247);
-  font-size: 0.9rem;
 }
 
 pre {
@@ -36,4 +39,9 @@ pre code,
 pre span {
   background-color: rgb(236, 236, 236) !important;
   color: #333 !important;
+}
+
+.linkButt {
+  border: solid 1px black;
+  padding: 0 10px 0 10px;
 }

@@ -12,8 +12,9 @@ body {
 }
 
 .wrapper {
+  margin: 0 100px 0 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   background: transparent;
   border: solid 1px;
@@ -30,7 +31,9 @@ body {
   width: 100%;
   display: grid;
   background: transparent;
-  grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+
   border: 1px solid #171b26;
 }
 .play-board .food {
@@ -61,11 +64,6 @@ body {
 }
 
 @media screen and (max-width: 800px) {
-  .wrapper {
-    width: 50vmin;
-    height: 70vmin;
-  }
-
   .game-details {
     font-size: 1rem;
     padding: 15px 27px;

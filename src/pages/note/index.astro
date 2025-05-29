@@ -15,19 +15,19 @@ const posts = Object.entries(
   };
 });
 const pageTitle = 'note';
+const description = '감상문, 메모, 기록';
+
 ---
 
-<MainLayout pageTitle={pageTitle}>
-    <ul class="space-y-2">
+<MainLayout pageTitle={pageTitle} description={description}>
+    <ul>
     {
       posts.map(({ url, title, date }) => (
-        <li>
-          <div class="flex flex-row justify-between">
-          <a href={url}>{title}</a>
+        <div class="flex flex-row justify-between hover:bg-gray-200">
+          <a class="hover:bg-gray-200"  href={url}>{title}</a>
           <div>{date}</div>
           </div>
           
-        </li>
       ))
     }
   </ul>
