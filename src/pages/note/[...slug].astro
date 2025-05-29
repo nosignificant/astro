@@ -1,4 +1,5 @@
 ---
+import MainLayout from "../../layouts/main-layout.astro";
 import PostLayout from "../../layouts/post-layout.astro";
 export async function getStaticPaths() {
   const modules = import.meta.glob("../../content/note/**/*.md", {
@@ -12,7 +13,7 @@ export async function getStaticPaths() {
     return {
       params: { slug },
       props: {
-        title: module.frontmatter.title,
+        title: slug,
         Content: module.default,
       },
     };
@@ -22,7 +23,6 @@ export async function getStaticPaths() {
 const { title, Content } = Astro.props;
 ---
 
-<PostLayout>
-  <h1>{title}</h1>
+<MainLayout pageTitle={title}>
   <Content />
-</PostLayout>
+</MainLayout>

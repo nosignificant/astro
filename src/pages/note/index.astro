@@ -1,24 +1,32 @@
 ---
+import { format } from 'date-fns';
 import MainLayout from "../../layouts/main-layout.astro";
 
 const posts = Object.entries(
   import.meta.glob("../../content/note/**/*.md", { eager: true })
 ).map(([path, module]: [string, any]) => {
   const slug = path.replace("../../content/note/", "").replace(/\.md$/, "");
+  const date = module.frontmatter.date;
+  
   return {
-    title: module.frontmatter.title,
+    title: slug,
     url: `/note/${slug}`,
+    date: format(date, 'yyyy-MM-dd'),
   };
 });
+const pageTitle = 'note';
 ---
 
-<MainLayout>
-  <h1 class="text-xl font-bold mb-4">note</h1>
-  <ul class="space-y-2">
+<MainLayout pageTitle={pageTitle}>
+    <ul class="space-y-2">
     {
-      posts.map(({ url, title }) => (
+      posts.map(({ url, title, date }) => (
         <li>
+          <div class="flex flex-row justify-between">
           <a href={url}>{title}</a>
+          <div>{date}</div>
+          </div>
+          
         </li>
       ))
     }

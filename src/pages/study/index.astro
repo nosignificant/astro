@@ -1,6 +1,6 @@
 ---
 import MainLayout from "../../layouts/main-layout.astro";
-
+const pageTitle = 'study';
 const posts = Object.keys(
   import.meta.glob("./*/index.astro", { eager: true })
 ).map((path: string) => {
@@ -12,8 +12,7 @@ const posts = Object.keys(
 });
 ---
 
-<MainLayout>
-  <h1 class="text-xl font-bold mb-4">study</h1>
+<MainLayout pageTitle={pageTitle}>
   <ul class="space-y-2">
     {
       posts.map(({ url, title }) => (

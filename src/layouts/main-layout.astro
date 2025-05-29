@@ -1,21 +1,26 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.css";
 import BaseHead from "../components/BaseHead.astro";
 
-console.log("main layout actived");
+import "../styles/global.css";
+
+const { pageTitle }= Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead />
+    <BaseHead pageTitle={pageTitle}/>
   </head>
-  <body>
-    <Navigation />
-    <main>
-      <slot />
-    </main>
-    <Footer />
-  </body>
+<body class="flex justify-center">
+<div class="w-full max-w-4xl px-[100px]">
+            <div class="mt-[100px]"></div>  
+          <h2 class="mb-2">{pageTitle}</h1>
+  <Navigation class="mb-2"/>
+          <main>
+        <slot/>
+          </main>
+<Footer />
+      </div>
+</body>
 </html>

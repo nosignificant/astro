@@ -1,19 +1,19 @@
 ---
 import MainLayout from "../../../layouts/main-layout.astro";
-import Notes from "./snake-game.md"; // ⬅️ mdx 설명 파일
-import SnakeGame from "./SnakeGame"; // ⬅️ canvas / JS 결과물 래핑한 React 컴포넌트
-const title = "Snake Game";
+import Notes from "./snake-game.md"; 
+import '../../../styles/global.css'
+import SnakeGame from "./SnakeGame";
+const pageTitle = 'snake game'
 ---
 
-<MainLayout seo={{ title }}>
-  <section class="max-w-content mx-auto py-8">
-    <h1 class="text-2xl font-bold mb-2">{title}</h1>
-
-    <div class="border rounded-lg overflow-hidden h-96 mb-10">
-      <SnakeGame />
+<MainLayout pageTitle={pageTitle}>
+  <section class="p-0 m-0">
+    <div class="flex lg:flex-row md:flex-col items-start gap-4">
+      <div />      
+        <SnakeGame ></div>
+      <div class="max-w-2xl pl-[50px] m-0 p-0">
+        <Notes />
+      </div>
     </div>
-    <article class="prose">
-      <Notes />
-    </article>
   </section>
 </MainLayout>

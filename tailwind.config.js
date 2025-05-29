@@ -1,16 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,css}"],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,vue,svelte,md,mdx,css}",
+    "./public/**/*.html",
+  ],
   theme: {
-    extend: {
-      colors: {
-        page: "var(--page-background)",
-        second: "var(--text-second)",
-        body: "var(--text-body)",
-        heading: "var(--heading)",
-        disabled: "var(--text-disabled)",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
