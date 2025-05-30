@@ -24,7 +24,7 @@ const description = '감상문, 메모, 기록';
     {
       posts.map(({ url, title, date }) => (
         <div class="flex flex-row justify-between hover:bg-gray-200">
-          <a class="hover:bg-gray-200"  href={url}>{title}</a>
+          <a href={url}>{title}</a>
           <div>{date}</div>
           </div>
           

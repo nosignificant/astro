@@ -18,14 +18,16 @@ const posts = Object.keys(
 ---
 
 <MainLayout pageTitle={pageTitle} description={description}>
-  <ul>
+    <ul>
     {
-      posts.map(({ url, title,jsurl }) => (
+      posts.map(({ url, title, jsurl }) => (
         <div class="flex flex-row justify-between hover:bg-gray-200">
-                    <a  href={url}>{title}</a>
+          <a href={url}>{title}</a>
           <a class="linkButt" href={jsurl}>link</a>
-        </div>
+          </div>
+          
       ))
     }
   </ul>
 </MainLayout>
+
