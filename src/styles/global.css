@@ -52,3 +52,7 @@ pre span {
 .headmenu {
   border: solid 1px black;
 }
+
+.navigation:hover {
+  color: rgb(137, 137, 137);
+}
