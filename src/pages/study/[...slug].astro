@@ -21,5 +21,8 @@ const { title, Content, description } = Astro.props;
 ---
 
 <MainLayout pageTitle={title} description={description}>
+  <article class="prose">
   <Content />
+
+  </article>
 </MainLayout>

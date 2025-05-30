@@ -20,8 +20,8 @@ body {
 pre {
   font-family: "Courier New", monospace;
   padding: 1rem;
-  margin: 0 3rem 0 3rem;
   overflow-x: auto;
+  overflow: scroll;
   font-size: 0.9rem;
   line-height: 1.5;
 }
@@ -43,4 +43,12 @@ pre span {
 .linkButt {
   border: solid 1px black;
   padding: 0 10px 0 10px;
+}
+
+.prose a:hover {
+  color: rgb(137, 137, 137);
+}
+
+.headmenu {
+  border: solid 1px black;
 }

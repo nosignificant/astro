@@ -3,18 +3,18 @@ import "../styles/global.css";
 const currentPath = Astro.url.pathname;
 ---
 
-<div class="flex flex-row mt-[50px] space-x-4">
-  <div class="hover:bg-gray-200">
-  <a href="/" class={currentPath === '/' ? 'underline' : ''}>nosignificant</a>
+<div class="flex flex-row mb-[100px] space-x-4">
+  <div class="headmenu">
+  <a href="/" class={currentPath === '/' ? 'headmenu' : ''}>nosignificant</a>
   </div>
-  <div class="hover:bg-gray-200">
-  <a href="/study/" class={currentPath.startsWith('/study') ? 'underline' : ''}>study</a>
+  <div class="headmenu">
+  <a href="/study/" class={currentPath.startsWith('/study') ? 'headmenu' : ''}>study</a>
   </div>
-  <div class="hover:bg-gray-200">
-      <a href="/note/" class={currentPath.startsWith('/note') ? 'underline' : ''}>note</a>
+  <div class="headmenu">
+      <a href="/note/" class={currentPath.startsWith('/note') ? 'headmenu' : ''}>note</a>
   </div>
-  <div class="hover:bg-gray-200">
-      <a href="/work/" class={currentPath.startsWith('/work') ? 'underline' : ''}>work</a>
+  <div class="headmenu">
+      <a href="/work/" class={currentPath.startsWith('/work') ? 'headmenu' : ''}>work</a>
   </div>
 </div>
 
