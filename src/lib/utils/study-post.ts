@@ -19,13 +19,14 @@ export function studyPosts() {
     const folderName = parts.length > 1 ? parts[parts.length - 2] : '';
     const isFoldered = folderName && slug !== folderName;
 
-    // frontmatter에서 isLink 가져오기
     const isLink = module.frontmatter?.isLink || false;
 
     if (!folderMap[folderName]) {
       folderMap[folderName] = {
         folder: folderName,
-        parentUrl: `/study/${folderName}/${folderName}`,
+        parentUrl: folderName
+          ? `/study/${folderName}/${folderName}`
+          : `/study/${slug}`,
         children: [],
       };
     }
@@ -33,9 +34,11 @@ export function studyPosts() {
     if (slug !== folderName) {
       folderMap[folderName].children.push({
         title: slug,
-        url: `/study/${folderName}/${slug}`,
+        url: folderName ? `/study/${folderName}/${slug}` : `/study/${slug}`,
         isLink: isLink,
-        jsurl: `/study/${folderName}/${slug}/forJS`,
+        jsurl: folderName
+          ? `/study/${folderName}/${slug}/forJS`
+          : `/study/${slug}/forJS`,
       });
     }
   });
