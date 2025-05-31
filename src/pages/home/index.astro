@@ -46,7 +46,10 @@ const posts = Object.entries(
                         .filter((post) => post.part === menu.name)
                         .slice(0, 2)
                         .map((post) => (
-                          <a class="mt-1 mb-1 ml-4" href={post.url}>
+                          <a
+                            class="mt-1 mb-1 ml-4 hover:bg-gray-200"
+                            href={post.url}
+                          >
                             {post.title}
                           </a>
                         ))}
