@@ -20,7 +20,7 @@ const posts = Object.entries(
   <ul>
     {
       posts.map(({ url, title, date }) => (
-        <div class="flex flex-row justify-between hover:bg-gray-200">
+        <div class="flex flex-row justify-between hover:bg-gray-200 mt-3">
           <div class="hidden sm:block w-1/5">{date}</div>
           <a class="w-4/5" href={url}>
             {title}

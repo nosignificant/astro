@@ -13,13 +13,13 @@ const posts = studyPosts();
       posts.map((group) => (
         <div>
           {group.folder && (
-            <div class="hover:bg-gray-200">
+            <div class="hover:bg-gray-200 mt-3">
               <a href={group.parentUrl}>{group.folder}</a>
             </div>
           )}
           <div class={group.folder ? 'pl-4 border-l border-gray-600' : ''}>
             {group.children.map((child) => (
-              <div class="flex flex-row justify-between hover:bg-gray-200 ">
+              <div class="flex flex-row justify-between hover:bg-gray-200 mt-3">
                 <div class="w-5/6">
                   <a href={child.url}>{child.title}</a>
                 </div>

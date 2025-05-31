@@ -9,7 +9,6 @@
 
 * {
   font-family: 'ChosunGu', sans-serif;
-  line-height: 2;
   color: black;
 }
 
@@ -42,6 +41,10 @@ pre span {
 .linkButt {
   border: solid 1px black;
   padding: 0 10px 0 10px;
+}
+
+.prose p {
+  font-size: 0.9rem;
 }
 
 .prose a:hover {
