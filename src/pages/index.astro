@@ -1,5 +1,12 @@
 ---
-// src/pages/index.astro
 export const prerender = true;
-Astro.redirect('/home');
 ---
+
+<html lang="en">
+  <head>
+    <meta http-equiv="refresh" content="0; url=/home" />
+  </head>
+  <body>
+    <p>Redirecting to <a href="/home">/home</a>...</p>
+  </body>
+</html>

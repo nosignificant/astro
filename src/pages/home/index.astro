@@ -15,27 +15,24 @@ const pageTitle = 'nosignificant';
       class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
     >
       <div class="mt-[100px]"></div>
-      <a href="/">nosignificant</a>
-      <main>
-        <div>안녕하세요. 뭐가 올라올지 모른다.</div>
-        <div class="flex flex-col">
-          <div>
-            {
-              Menus.map((menu) => {
-                if (menu.name != 'nosignificant')
-                  return (
-                    <div>
-                      <a class="underline" href={menu.url}>
-                        {menu.name}이다.
-                      </a>
-                    </div>
-                  );
-              })
-            }
-          </div>
+      <div>안녕하세요. nosignificant입니다. 뭐가 올라올지 모른다.</div>
+      <div class="flex flex-col">
+        <div>
+          {
+            Menus.map((menu) => {
+              if (menu.name != 'nosignificant')
+                return (
+                  <div>
+                    <a class="underline" href={menu.url}>
+                      {menu.name}이다.
+                    </a>
+                  </div>
+                );
+            })
+          }
         </div>
-        <Footer />
-      </main>
+      </div>
+      <Footer />
     </div>
   </body>
 </html>

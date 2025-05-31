@@ -1,6 +1,6 @@
 export const Menus = [
-  { name: 'nosignificant', url: '/home' },
-  { name: 'study', url: '/study' },
-  { name: 'note', url: '/note' },
-  { name: 'work', url: '/work' },
+  { name: 'nosignificant', url: '/home', description: 'home입니다.' },
+  { name: 'study', url: '/study', description: 'js, frontend 스터디 기록' },
+  { name: 'note', url: '/note', description: '감상문, 메모, 기록' },
+  { name: 'work', url: '/work', description: '만드는중' },
 ];
