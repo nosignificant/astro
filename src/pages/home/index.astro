@@ -33,9 +33,9 @@ const posts = Object.entries(
               if (menu.name != 'nosignificant')
                 return (
                   <div>
-                    <div class="flex flex-row mb-1 mt-4">
+                    <div class="flex flex-row mb-1 mt-4 ">
                       {' '}
-                      <a class="underline" href={menu.url}>
+                      <a class="underline hover:bg-gray-200" href={menu.url}>
                         {menu.name}
                       </a>
                       <div class="pl-4 text-gray-400">{menu.description}</div>
