@@ -1,42 +1,39 @@
 ---
+import { SITE_TITLE } from '../../consts';
 import MainLayout from '../../layouts/main-layout.astro';
 import '../../styles/global.css';
+import { studyPosts, type FolderGroup } from '../../lib/utils/study-post';
 
-const posts = Object.entries(
-  import.meta.glob('../../content/study/**/*.md', { eager: true }),
-).map(([path, module]: [string, any]) => {
-  const slug = path.replace('../../content/study/', '').replace(/\.md$/, '');
-
-  function checkFolder() {
-    if (slug.includes('/')) {
-    }
-  }
-
-  return {
-    title: slug,
-    url: `/study/${slug}`,
-    isLink: module.frontmatter.isLink,
-    jsurl: `/study/${slug}/forJS`,
-  };
-});
+const posts = studyPosts();
 ---
 
 <MainLayout>
   <div class="flex flex-col">
     {
-      posts.map(({ url, title, isLink, jsurl }) => (
-        <div class="flex flex-row justify-between hover:bg-gray-200">
-          <div class="w-1/6">
-            {isLink ? (
-              <a class="linkButt" href={jsurl}>
-                link
-              </a>
-            ) : (
-              <div>x</div>
-            )}
-          </div>
-          <div class="w-5/6">
-            <a href={url}>{title}</a>
+      posts.map((group) => (
+        <div>
+          {group.folder && (
+            <div class="hover:bg-gray-200">
+              <a href={group.parentUrl}>{group.folder}</a>
+            </div>
+          )}
+          <div class={group.folder ? 'pl-4 border-l border-gray-600' : ''}>
+            {group.children.map((child) => (
+              <div class="flex flex-row justify-between hover:bg-gray-200 ">
+                <div class="w-5/6">
+                  <a href={child.url}>{child.title}</a>
+                </div>
+                <div class="w-1/6">
+                  {child.isLink ? (
+                    <a class="linkButt" href={child.jsurl}>
+                      link
+                    </a>
+                  ) : (
+                    ''
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       ))
