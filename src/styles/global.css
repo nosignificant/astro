@@ -51,3 +51,12 @@ pre span {
 
 .headmenu {
 }
+
+@layer utilities {
+  .fade-in {
+    @apply duration-500 ease-in-out opacity-0;
+  }
+  .fade-in-active {
+    @apply opacity-100;
+  }
+}

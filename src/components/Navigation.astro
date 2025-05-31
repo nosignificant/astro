@@ -12,14 +12,14 @@ const currentPath = Astro.url.pathname;
           class={
             currentPath.startsWith(menu.url)
               ? 'headmenu '
-              : 'group text-gray-400 hover:text-gray-700'
+              : 'group text-gray-400 '
           }
         >
           <a href={menu.url}>
             {menu.name}{' '}
             {currentPath === menu.url && <div>{menu.description}</div>}
             {currentPath !== menu.url && (
-              <div class="hidden group-hover:block group-hover:text-gray-400">
+              <div class="fade-in w-0 group-hover:w-full group-hover:text-gray-400  group-hover:fade-in-active">
                 {menu.description}
               </div>
             )}
