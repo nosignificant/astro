@@ -19,8 +19,13 @@ const currentPath = Astro.url.pathname;
       class="w-full lg:text-sm max-w-3xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
     >
       <div class="mt-[100px]"></div>
-      <h2 class="mb-2">{pageTitle}</h2>
-      <div>{description}</div>
+      {
+        Menus.map((menu) => ( 
+          <div>{currentPath === menu.url ? 
+          <h2 class="mb-2">{menu.name}</h2> 
+          <div>{menu.description}</div> : ''}</div>
+        ))
+      }
       <Navigation client:load currentPath={currentPath} Menus={Menus} />
       <main>
         <slot />

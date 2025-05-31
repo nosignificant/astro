@@ -14,11 +14,9 @@ const posts = Object.entries(
     date: format(date, 'yyyy-MM-dd'),
   };
 });
-const pageTitle = 'note';
-const description = '감상문, 메모, 기록';
 ---
 
-<MainLayout pageTitle={pageTitle} description={description}>
+<MainLayout>
   <ul>
     {
       posts.map(({ url, title, date }) => (
