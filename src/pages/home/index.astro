@@ -3,7 +3,14 @@ import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { Menus } from '../../lib/data/menus';
-const pageTitle = 'nosignificant';
+
+const posts = Object.keys(
+  import.meta.glob('../../content/**/*.md', { eager: true }),
+).map((path: string) => {
+  const slug = path.replace('../../content', '').replace(/\.md$/, '');
+  const parts = slug.split('/').filter(Boolean);
+  return { title: parts[1], part: parts[0] };
+});
 ---
 
 <html lang="en">
@@ -23,9 +30,22 @@ const pageTitle = 'nosignificant';
               if (menu.name != 'nosignificant')
                 return (
                   <div>
-                    <a class="underline" href={menu.url}>
-                      {menu.name}이다.
-                    </a>
+                    <div class="flex flex-row">
+                      {' '}
+                      <a class="underline" href={menu.url}>
+                        {menu.name}
+                      </a>
+                      <div class="pl-4 text-gray-400">{menu.description}</div>
+                    </div>
+
+                    <div class="ml-4">
+                      {posts
+                        .filter((post) => post.part === menu.name)
+                        .slice(0, 2)
+                        .map((post) => (
+                          <div>{post.title}</div>
+                        ))}
+                    </div>
                   </div>
                 );
             })
