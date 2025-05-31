@@ -25,6 +25,7 @@ const posts = Object.entries(
       <div class="mt-[100px]"></div>
       <h2>안녕하세요.</h2>
       <div>최근 메모, 기록들</div>
+      <div class="mt-[10px]"></div>
       <div class="flex flex-col">
         <div>
           {
@@ -32,7 +33,7 @@ const posts = Object.entries(
               if (menu.name != 'nosignificant')
                 return (
                   <div>
-                    <div class="flex flex-row">
+                    <div class="flex flex-row mb-1 mt-4">
                       {' '}
                       <a class="underline" href={menu.url}>
                         {menu.name}
@@ -40,12 +41,14 @@ const posts = Object.entries(
                       <div class="pl-4 text-gray-400">{menu.description}</div>
                     </div>
 
-                    <div class="ml-4 flex flex-col">
+                    <div class="flex flex-col border-l border-gray-600 ">
                       {posts
                         .filter((post) => post.part === menu.name)
                         .slice(0, 2)
                         .map((post) => (
-                          <a href={post.url}>{post.title}</a>
+                          <a class="mt-1 mb-1 ml-4" href={post.url}>
+                            {post.title}
+                          </a>
                         ))}
                     </div>
                   </div>
