@@ -1,5 +1,5 @@
 ---
-import '../../global.css';
+import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { Menus } from '../../lib/data/menus';
@@ -22,11 +22,14 @@ const pageTitle = 'nosignificant';
           <div>
             {
               Menus.map((menu) => {
-                <div>
-                  <a class="underline" href="menu.url">
-                    {menu.name}이다.
-                  </a>
-                </div>;
+                if (menu.name != 'nosignificant')
+                  return (
+                    <div>
+                      <a class="underline" href={menu.url}>
+                        {menu.name}이다.
+                      </a>
+                    </div>
+                  );
               })
             }
           </div>
