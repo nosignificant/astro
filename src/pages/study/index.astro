@@ -6,6 +6,12 @@ const posts = Object.entries(
   import.meta.glob('../../content/study/**/*.md', { eager: true }),
 ).map(([path, module]: [string, any]) => {
   const slug = path.replace('../../content/study/', '').replace(/\.md$/, '');
+
+  function checkFolder() {
+    if (slug.includes('/')) {
+    }
+  }
+
   return {
     title: slug,
     url: `/study/${slug}`,
