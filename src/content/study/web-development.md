@@ -82,3 +82,4 @@ const currentPath = Astro.url.pathname;
 고쳤다.
 
 그리고 각 페이지 설명도 따로 ts파일에 넣어서 정리했다.
+애니메이션도 넣었는데 웃기다. 웃겨서 나중에 고칠 거다.

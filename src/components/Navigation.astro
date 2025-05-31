@@ -19,7 +19,7 @@ const currentPath = Astro.url.pathname;
             {menu.name}{' '}
             {currentPath === menu.url && <div>{menu.description}</div>}
             {currentPath !== menu.url && (
-              <div class="fade-in w-0 group-hover:w-full group-hover:text-gray-400  group-hover:fade-in-active">
+              <div class="fade-in w-20 group-hover:w-full group-hover:text-gray-400  group-hover:fade-in-active">
                 {menu.description}
               </div>
             )}
