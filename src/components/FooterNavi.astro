@@ -1,16 +1,23 @@
 ---
-import "../styles/global.css";
+import '../styles/global.css';
+import { Menus } from '../lib/data/menus';
 const currentPath = Astro.url.pathname;
 ---
 
-<div class="navigation flex flex-row mb-[100px] space-x-4">
-    <a href="/" class={currentPath === '/' ? 'headmenu' : ''}>nosignificant</a>
-
-    <a href="/study/" class={currentPath.startsWith('/study') ? 'headmenu' : ''}>study</a>
-
-        <a href="/note/" class={currentPath.startsWith('/note') ? 'headmenu' : ''}>note</a>
-
-   <a href="/work/" class={currentPath.startsWith('/work') ? 'headmenu' : ''}>work</a>
-  </div>
+<div class="flex flex-row justify-center">
+  {
+    Menus.map((menu) => (
+      <div class="pr-4">
+        <div
+          class={
+            currentPath.startsWith(menu.url)
+              ? 'headmenu'
+              : ' text-gray-400 hover:text-gray-700'
+          }
+        >
+          <a href={menu.url}>{menu.name}</a>
+        </div>
+      </div>
+    ))
+  }
 </div>
-

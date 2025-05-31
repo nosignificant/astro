@@ -1,14 +1,14 @@
-@import "./tailwind.css";
+@import './tailwind.css';
 
 @font-face {
-  font-family: "ChosunGu";
-  src: url("/fonts/ChosunGu.TTF") format("truetype");
+  font-family: 'ChosunGu';
+  src: url('/fonts/ChosunGu.TTF') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 * {
-  font-family: "ChosunGu", sans-serif;
+  font-family: 'ChosunGu', sans-serif;
   line-height: 2;
   color: black;
 }
@@ -18,7 +18,7 @@ body {
 }
 
 pre {
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   padding: 1rem;
   overflow-x: auto;
   overflow: scroll;
@@ -27,7 +27,7 @@ pre {
 }
 
 code {
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   color: #333;
   padding: 0.2rem 0.4rem;
 }
@@ -50,9 +50,4 @@ pre span {
 }
 
 .headmenu {
-  border: solid 1px black;
-}
-
-.navigation:hover {
-  color: rgb(137, 137, 137);
 }

@@ -1,27 +1,29 @@
 ---
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
-import BaseHead from "../components/BaseHead.astro";
-
-import "../styles/global.css";
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import '../styles/global.css';
 
 const { pageTitle, description } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead pageTitle={pageTitle}/>
+    <BaseHead pageTitle={pageTitle} />
   </head>
-<body class="flex justify-center">
-<div class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]">
-          <div class="mt-[100px]"></div>  
-          <h2 class="mb-2">{pageTitle}</h2>
-           <div>{description }</div>
-          <Navigation class="mb-2"/>
-          <main>
-        <slot/>
-          </main>
-<Footer />
-      </div>
-</body>
+  <body class="flex justify-center">
+    <div
+      class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
+    >
+      <div class="mt-[100px]"></div>
+      <h2 class="mb-2">{pageTitle}</h2>
+      <div>{description}</div>
+      <Navigation class="mb-2" />
+      <main>
+        <slot />
+      </main>
+
+      <Footer />
+    </div>
+  </body>
 </html>

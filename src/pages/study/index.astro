@@ -1,33 +1,38 @@
 ---
-import MainLayout from "../../layouts/main-layout.astro";
-import '../../styles/global.css'
+import MainLayout from '../../layouts/main-layout.astro';
+import '../../styles/global.css';
 
 const pageTitle = 'study';
 const description = 'js, frontend 스터디 기록';
-const posts = Object.keys(
-   import.meta.glob("../../content/study/**/*.md", { eager: true })
-).map((path: string) => {
-    const slug = path.replace("../../content/study/", "").replace(/\.md$/, "");
+const posts = Object.entries(
+  import.meta.glob('../../content/study/**/*.md', { eager: true }),
+).map(([path, module]: [string, any]) => {
+  const slug = path.replace('../../content/study/', '').replace(/\.md$/, '');
   return {
     title: slug,
     url: `/study/${slug}`,
+    isLink: module.frontmatter.isLink,
     jsurl: `/study/${slug}/forJS`,
-
-};
+  };
 });
 ---
 
 <MainLayout pageTitle={pageTitle} description={description}>
-    <ul>
+  <ul>
     {
-      posts.map(({ url, title, jsurl }) => (
-        <div class="flex flex-row justify-between hover:bg-gray-200">
+      posts.map(({ url, title, isLink, jsurl }) => (
+        <div class=" flex flex-row justify-between hover:bg-gray-200">
           <a href={url}>{title}</a>
-          <a class="linkButt" href={jsurl}>link</a>
-          </div>
-          
+          {isLink ? (
+            <a class="linkButt" href={jsurl}>
+              {' '}
+              link
+            </a>
+          ) : (
+            ''
+          )}
+        </div>
       ))
     }
   </ul>
 </MainLayout>
-

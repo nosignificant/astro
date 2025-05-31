@@ -1,6 +1,6 @@
 ---
-title: "brick break"
 description: "Lorem ipsum dolor sit amet"
+isLink : false
 ---
 
 html 자체에 canvas라는 document object 가 있다고 합니다

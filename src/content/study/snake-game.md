@@ -1,6 +1,6 @@
 ---
-title: "snake game"
 description: "Lorem ipsum dolor sit amet"
+isLink: true
 ---
 
 css 에도 함수 쓸 수 있구나

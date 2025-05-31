@@ -1,0 +1,38 @@
+---
+import '../../global.css';
+import Footer from '../../components/Footer.astro';
+import BaseHead from '../../components/BaseHead.astro';
+import { Menus } from '../../lib/data/menus';
+const pageTitle = 'nosignificant';
+---
+
+<html lang="en">
+  <head>
+    <BaseHead />
+  </head>
+  <body class="flex justify-center">
+    <div
+      class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
+    >
+      <div class="mt-[100px]"></div>
+      <a href="/">nosignificant</a>
+      <main>
+        <div>안녕하세요. 뭐가 올라올지 모른다.</div>
+        <div class="flex flex-col">
+          <div>
+            {
+              Menus.map((menu) => {
+                <div>
+                  <a class="underline" href="menu.url">
+                    {menu.name}이다.
+                  </a>
+                </div>;
+              })
+            }
+          </div>
+        </div>
+        <Footer />
+      </main>
+    </div>
+  </body>
+</html>
