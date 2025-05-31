@@ -3,7 +3,6 @@ import MainLayout from '../../layouts/main-layout.astro';
 import '../../styles/global.css';
 
 const pageTitle = 'study';
-const description = 'js, frontend 스터디 기록';
 const posts = Object.entries(
   import.meta.glob('../../content/study/**/*.md', { eager: true }),
 ).map(([path, module]: [string, any]) => {
@@ -17,22 +16,25 @@ const posts = Object.entries(
 });
 ---
 
-<MainLayout pageTitle={pageTitle} description={description}>
-  <ul>
+<MainLayout pageTitle={pageTitle}>
+  <div class="flex flex-col">
     {
       posts.map(({ url, title, isLink, jsurl }) => (
-        <div class=" flex flex-row justify-between hover:bg-gray-200">
-          <a href={url}>{title}</a>
-          {isLink ? (
-            <a class="linkButt" href={jsurl}>
-              {' '}
-              link
-            </a>
-          ) : (
-            ''
-          )}
+        <div class="flex flex-row justify-between hover:bg-gray-200">
+          <div class="w-1/6">
+            {isLink ? (
+              <a class="linkButt" href={jsurl}>
+                link
+              </a>
+            ) : (
+              <div>x</div>
+            )}
+          </div>
+          <div class="w-5/6">
+            <a href={url}>{title}</a>
+          </div>
         </div>
       ))
     }
-  </ul>
+  </div>
 </MainLayout>

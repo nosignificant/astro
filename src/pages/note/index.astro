@@ -1,13 +1,13 @@
 ---
 import { format } from 'date-fns';
-import MainLayout from "../../layouts/main-layout.astro";
+import MainLayout from '../../layouts/main-layout.astro';
 
 const posts = Object.entries(
-  import.meta.glob("../../content/note/**/*.md", { eager: true })
+  import.meta.glob('../../content/note/**/*.md', { eager: true }),
 ).map(([path, module]: [string, any]) => {
-  const slug = path.replace("../../content/note/", "").replace(/\.md$/, "");
+  const slug = path.replace('../../content/note/', '').replace(/\.md$/, '');
   const date = module.frontmatter.date;
-  
+
   return {
     title: slug,
     url: `/note/${slug}`,
@@ -16,18 +16,18 @@ const posts = Object.entries(
 });
 const pageTitle = 'note';
 const description = '감상문, 메모, 기록';
-
 ---
 
 <MainLayout pageTitle={pageTitle} description={description}>
-    <ul>
+  <ul>
     {
       posts.map(({ url, title, date }) => (
         <div class="flex flex-row justify-between hover:bg-gray-200">
-          <a href={url}>{title}</a>
-          <div>{date}</div>
-          </div>
-          
+          <div class="hidden sm:block w-1/5">{date}</div>
+          <a class="w-4/5" href={url}>
+            {title}
+          </a>
+        </div>
       ))
     }
   </ul>

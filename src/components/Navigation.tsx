@@ -1,5 +1,6 @@
 import type { MenuItem } from '../lib/data/menus';
 import '../styles/global.css';
+import React, { useState, useEffect } from 'react';
 
 interface NavigationProps {
   currentPath: string;
@@ -13,13 +14,23 @@ function slicePath(currentPath): string {
   else return currentPath;
 }
 
-import React from 'react';
 export default function Navigation({ currentPath, Menus }: NavigationProps) {
+  const [hovered, setHovered] = useState<string | null>(null);
+  useEffect(() => {
+    console.log('hovered changed:', hovered);
+  }, [hovered]);
+
   return (
     <div>
       <div className="flex flex-row">
         {Menus.map((menu) => (
-          <div>
+          <div
+            key={menu.url}
+            onMouseEnter={(e) => {
+              setHovered(menu.description);
+            }}
+            onMouseLeave={() => setHovered('')}
+          >
             <div className="pr-4">
               <div
                 className={
@@ -34,13 +45,9 @@ export default function Navigation({ currentPath, Menus }: NavigationProps) {
           </div>
         ))}
       </div>
-      {Menus.map((menu) =>
-        slicePath(currentPath) !== menu.url ? (
-          <div key={menu.url} className="opacity-0 text-gray-400">
-            {menu.description}
-          </div>
-        ) : null,
-      )}
+      <div className="mt-2 text-gray-500 min-h-[2rem]">{hovered || ''}</div>
     </div>
   );
 }
+
+//href={menu.url}

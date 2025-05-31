@@ -22,6 +22,7 @@ isLink: false
 5. study 상위의 제목이 있고 그 아래 토글 형식의 게시글을 만들어서 여러개의 자식 게시글이 묶여있게 만들고 싶다. 지금 가독성이 지린다.
 6. snake game 실행이 됐는데 food를 먹는 게 작동이 안된다.
 7. 아니 내부 글 가독성도 지린다. 이걸 일일히 만져야 하나?
+8. page, slug 한 파일로 통일
 
 ### 해결한 것
 
@@ -34,52 +35,3 @@ isLink: false
 --
 
 고민인 건 카테고리를 만들다보니까 이 세 개의 카테고리가 모호하다는 생각이 들기 시작했다는 점이다. 근데 나는 분류하고 카테고리화하는 게 좋아서 어떻게든 분류해서 집어넣고싶은 마음이다. 어찌됐던 정갈하게 만들고 싶다.
-
-## 0531
-
-[이 사람](https://bepyan.me/)은 헤더 메뉴 로딩이 거의 안 되는 것처럼 보이는데 어떻게 했지
-
-### study 탭 링크 버튼
-
-솔미의 코드를 훔쳐보고 study탭에 링크 버튼이 필요한 거에만 달려 있게 했다.
-근데 이러니까 제목이랑 링크 버튼이 너무 멀리 떨어져 있어 보인다.
-
-### 헤더 네비게이션
-
-일일히 study, note, work로 적어놨다가 map함수로 나열이 되게끔 바꿨다.
-
-원래는 이렇게 생겼었다.
-
-```
----
-import "../styles/global.css";
-const currentPath = Astro.url.pathname;
----
-
-<div class="navigation flex flex-row mb-[100px] space-x-4">
-    <a href="/" class={currentPath === '/' ? 'headmenu' : ''}>nosignificant</a>
-    <a href="/study/" class={currentPath.startsWith('/study') ? 'headmenu' : ''}>study</a>
-        <a href="/note/" class={currentPath.startsWith('/note') ? 'headmenu' : ''}>note</a>
-   <a href="/work/" class={currentPath.startsWith('/work') ? 'headmenu' : ''}>work</a>
-  </div>
-</div>
-
-```
-
-그리고 지금 헤더 메뉴에 글자색 넣는 방식이 이렇게인데
-
-```
-          class={
-            currentPath === menu.url
-              ? 'headmenu'
-              : ' text-gray-400 hover:text-gray-700'
-          }
-```
-
-이러니까 게시글 내부 url랑 일치하지가 않아서 헤더에 css가 안 붙는다.
-그래서 `currentPath.startsWith(menu.url) 으로바꿨더니 index.astro의 경로가 '/'이라서 여기에도 불이들어온다. 가장 첫 페이지를 home으로 바꿔줘야겠다.
-
-고쳤다.
-
-그리고 각 페이지 설명도 따로 ts파일에 넣어서 정리했다.
-애니메이션도 넣었는데 웃기다. 웃겨서 나중에 고칠 거다.
