@@ -1,3 +1,9 @@
+export interface MenuItem {
+  name: string;
+  url: string;
+  description: string;
+}
+
 export const Menus = [
   { name: 'nosignificant', url: '/home', description: 'home입니다.' },
   { name: 'study', url: '/study', description: 'js, frontend 스터디 기록' },
