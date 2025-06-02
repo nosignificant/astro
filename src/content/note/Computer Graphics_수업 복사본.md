@@ -454,7 +454,6 @@ base map
 # 0528
 
 openGl으ㅣ 역사를 개괄해주심
-음...
 
 rendering synthetic objects into Real scenes
 
@@ -466,4 +465,12 @@ multiple render target: 파이프라인은 하나인데 결과물? 여러개 렌
 이걸 다합치는 걸라나? - deferred
 각각의 도화지에 렌더를 위한 자료를 렌더링 하고 마지막 도화지에 이걸 다합쳐서 그림
 
-왜 이렇게 따려 그리는 걸까요?
+프로그램 코드는 그냥 프로그램 안에서만 0101하고 돌아간다고 생각했는데 생각보다 물리적인 차원이랑 접해있음 
+CPU <> GPU 연결이 그냥어찌어찌 될 것이다~ 하고 막연하게 생각했는데 정보들을 넘겨줄 때 어떻게 넘겨줄지 생각해야하고 그럼
+예를 들면 이런 코드 
+```
+loc_u_PVM = glGetUniformLocation(program, 'U_PVM');
+```
+gpu에 만들어 둔 변수를 cpu쪽에서 접근하기 위해 그 경로? 를 저장하는 코드임 
+
+이러고 이후 `glUniformMatrix4fv`이런 함수를 써서 위의 `glGetUniformLocation` 를 통해 알아낸 경로에 넣음 
