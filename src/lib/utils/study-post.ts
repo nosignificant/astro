@@ -1,55 +1,84 @@
 import { format } from 'date-fns';
 
-export type FolderGroup = {
+export type StudyGroup = {
   folder: string;
   parentUrl: string;
+  folderStartDate: string;
   children: {
-    isFoldered: boolean;
     title: string;
     url: string;
+    isFoldered: boolean;
     isLink: boolean;
-    date: Date;
     jsurl: string;
+    date: string;
   }[];
 };
 
-export function studyPosts() {
-  const folderMap: Record<string, FolderGroup> = {};
+export function studyPosts(): StudyGroup[] {
+  const folderMap: Record<
+    string,
+    {
+      folder: string;
+      parentUrl: string;
+      children: {
+        title: string;
+        url: string;
+        isFoldered: boolean;
+        isLink: boolean;
+        jsurl: string;
+        date: Date;
+      }[];
+    }
+  > = {};
+
+  const orphanPosts: {
+    title: string;
+    url: string;
+    isFoldered: boolean;
+    isLink: boolean;
+    jsurl: string;
+    date: Date;
+  }[] = [];
 
   Object.entries(
     import.meta.glob('../../content/study/**/*.md', { eager: true }),
-  ).map(([path, module]: [string, any]) => {
-    //절대경로에서 잡것 떼기
+  ).forEach(([path, module]: [string, any]) => {
     const rawSlug = path
       .replace('../../content/study/', '')
       .replace(/\.md$/, '');
     const parts = rawSlug.split('/');
 
-    const slug = parts[parts.length - 1]; //젤 뒷부분
-    const folderName = parts.length > 1 ? parts[parts.length - 2] : ''; //젤 뒷부분에서 한칸 앞, 폴더 이름
-    const isFoldered = (folderName && slug !== folderName) || false;
+    const slug = parts[parts.length - 1];
+    const folderName = parts.length > 1 ? parts[parts.length - 2] : '';
+    const isFoldered = folderName && slug !== folderName;
     const rawDate = module.frontmatter.date;
     const dateObj = new Date(rawDate);
-
-    //isLink가 없을 때 false
     const isLink = module.frontmatter?.isLink || false;
 
-    if (!folderMap[folderName]) {
-      folderMap[folderName] = {
-        folder: folderName,
-        parentUrl: folderName
-          ? `/study/${folderName}/${folderName}`
-          : `/study/${slug}`,
-        children: [],
-      };
-    }
+    if (isFoldered) {
+      if (!folderMap[folderName]) {
+        folderMap[folderName] = {
+          folder: folderName,
+          parentUrl: `/study/${folderName}/${folderName}`,
+          children: [],
+        };
+      }
 
-    if (slug !== folderName) {
       folderMap[folderName].children.push({
         title: slug,
+        url: `/study/${folderName}/${slug}`,
+        isFoldered,
+        isLink,
+        jsurl: `/study/${folderName}/${slug}/forJS`,
+        date: dateObj,
+      });
+    } else {
+      // 자식 없는 단일 파일도 그룹처럼 처리
+      orphanPosts.push({
+        title: slug,
         url: folderName ? `/study/${folderName}/${slug}` : `/study/${slug}`,
-        isLink: isLink,
-        isFoldered: isFoldered,
+        isFoldered: false,
+        isLink,
         jsurl: folderName
           ? `/study/${folderName}/${slug}/forJS`
           : `/study/${slug}/forJS`,
@@ -58,24 +87,39 @@ export function studyPosts() {
     }
   });
 
-  Object.values(folderMap).forEach((group) => {
+  // Group 형태로 통합
+  const groups: StudyGroup[] = [];
+
+  for (const group of Object.values(folderMap)) {
     group.children.sort((a, b) => b.date.getTime() - a.date.getTime());
+
+    groups.push({
+      folder: group.folder,
+      parentUrl: group.parentUrl,
+      folderStartDate: format(group.children[0].date, 'yyyy-MM-dd'),
+      children: group.children.map((child) => ({
+        ...child,
+        date: format(child.date, 'yyyy-MM-dd'),
+      })),
+    });
+  }
+
+  // 단일 파일들도 그룹처럼 넣기
+  orphanPosts.forEach((post) => {
+    groups.push({
+      folder: post.title,
+      parentUrl: post.url,
+      folderStartDate: format(post.date, 'yyyy-MM-dd'),
+      children: [],
+    });
   });
 
-  console.log(
-    Object.values(folderMap).flatMap((group) =>
-      group.children.map((child) => ({
-        title: child.title,
-        isFoldered: child.isFoldered,
-      })),
-    ),
+  // 최종 정렬: 그룹 전체를 날짜 기준 내림차순
+  groups.sort(
+    (a, b) =>
+      new Date(b.folderStartDate).getTime() -
+      new Date(a.folderStartDate).getTime(),
   );
 
-  return Object.values(folderMap).map((group) => ({
-    ...group,
-    children: group.children.map((child) => ({
-      ...child,
-      date: format(child.date, 'yyyy-MM-dd'), // ← 이 시점에서 string으로 변환
-    })),
-  }));
+  return groups;
 }
