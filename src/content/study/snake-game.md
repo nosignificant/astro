@@ -1,5 +1,6 @@
 ---
-description: "Lorem ipsum dolor sit amet"
+description: 'Lorem ipsum dolor sit amet'
+date: 2025-04-07
 isLink: true
 ---
 
@@ -27,7 +28,7 @@ snakeBody[0] = [snakeX, snakeY];
 ```jsx
 let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 for (let i = 0; i < snakeBody.length; i++) {
-  html += `<div class="${i === 0 ? "head" : "body"}" style="grid-area: ${
+  html += `<div class="${i === 0 ? 'head' : 'body'}" style="grid-area: ${
     snakeBody[i][1]
   } / ${snakeBody[i][0]}"></div>`;
 }

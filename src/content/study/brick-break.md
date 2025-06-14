@@ -1,6 +1,7 @@
 ---
-description: "Lorem ipsum dolor sit amet"
-isLink : false
+description: 'Lorem ipsum dolor sit amet'
+date: 2025-04-07
+isLink: false
 ---
 
 html 자체에 canvas라는 document object 가 있다고 합니다
@@ -9,7 +10,7 @@ ctx에다가 canvas자체에서 쓸 수 있는 그래픽 뭐시기들… 할당�
 
 ```jsx
 //mouse moving eventListner and function
-document.addEventListener("mousemove", mouseMoveHandler, false);
+document.addEventListener('mousemove', mouseMoveHandler, false);
 
 function mouseMoveHandler(e) {
   var relativeX = e.clientX - canvas.offsetLeft;

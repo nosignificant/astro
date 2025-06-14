@@ -1,26 +1,15 @@
 ---
-import { format } from 'date-fns';
 import MainLayout from '../../layouts/main-layout.astro';
+import { notePosts } from '../../lib/utils/note-post';
 
-const posts = Object.entries(
-  import.meta.glob('../../content/note/**/*.md', { eager: true }),
-).map(([path, module]: [string, any]) => {
-  const slug = path.replace('../../content/note/', '').replace(/\.md$/, '');
-  const date = module.frontmatter.date;
-
-  return {
-    title: slug,
-    url: `/note/${slug}`,
-    date: format(date, 'yyyy-MM-dd'),
-  };
-});
+const posts = notePosts();
 ---
 
 <MainLayout>
   <ul>
     {
       posts.map(({ url, title, date }) => (
-        <div class="flex flex-row justify-between hover:bg-gray-200 mt-3">
+        <div class="flex flex-row justify-between hover:bg-gray-200 mt-3  ">
           <div class="hidden sm:block w-1/5">{date}</div>
           <a class="w-4/5" href={url}>
             {title}

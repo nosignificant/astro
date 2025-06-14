@@ -1,5 +1,4 @@
 ---
-import { SITE_TITLE } from '../../consts';
 import MainLayout from '../../layouts/main-layout.astro';
 import '../../styles/global.css';
 import { studyPosts, type FolderGroup } from '../../lib/utils/study-post';
@@ -21,6 +20,10 @@ const posts = studyPosts();
             {group.children.map((child) => (
               <div class="flex flex-row justify-between hover:bg-gray-200 mt-3">
                 <div class="w-5/6">
+                  {!child.isFoldered && (
+                    <div class="hidden sm:block w-1/5">{child.date}</div>
+                  )}
+
                   <a href={child.url}>{child.title}</a>
                 </div>
                 <div class="w-1/6">
