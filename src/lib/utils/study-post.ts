@@ -50,12 +50,14 @@ export function studyPosts(): StudyGroup[] {
 
     const slug = parts[parts.length - 1];
     const folderName = parts.length > 1 ? parts[parts.length - 2] : '';
-    const isFoldered = folderName && slug !== folderName;
+    const isFoldered = parts.length > 1 && slug !== folderName;
+    const isRootFile = parts.length === 1;
     const rawDate = module.frontmatter.date;
     const dateObj = new Date(rawDate);
     const isLink = module.frontmatter?.isLink || false;
 
     if (isFoldered) {
+      // 자식 파일
       if (!folderMap[folderName]) {
         folderMap[folderName] = {
           folder: folderName,
@@ -72,19 +74,18 @@ export function studyPosts(): StudyGroup[] {
         jsurl: `/study/${folderName}/${slug}/forJS`,
         date: dateObj,
       });
-    } else {
-      // 자식 없는 단일 파일도 그룹처럼 처리
+    } else if (isRootFile) {
+      // 루트에 있는 단독 파일만 orphan에 넣는다 (폴더 대표 파일은 제외!)
       orphanPosts.push({
         title: slug,
-        url: folderName ? `/study/${folderName}/${slug}` : `/study/${slug}`,
+        url: `/study/${slug}`,
         isFoldered: false,
         isLink,
-        jsurl: folderName
-          ? `/study/${folderName}/${slug}/forJS`
-          : `/study/${slug}/forJS`,
+        jsurl: `/study/${slug}/forJS`,
         date: dateObj,
       });
     }
+    // ❌ slug === folderName 인 대표 파일은 처리하지 않는다.
   });
 
   // Group 형태로 통합

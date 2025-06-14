@@ -8,37 +8,42 @@ const posts = studyPosts();
 
 <MainLayout>
   {
-    posts.map((group) => (
-      <div>
-        <div class="hover:bg-gray-200 mt-3">
-          <a href={group.parentUrl}>
-            <div>{group.folder}</div>
-            <div>{group.folderStartDate}</div>
-          </a>
-        </div>
+    posts.map((group) => {
+      const hasSelfAsChild =
+        group.children.length === 1 && group.children[0].title === group.folder;
 
-        {group.children.length > 0 && (
-          <div class="pl-4 border-l border-gray-600">
-            {group.children.map((child) => (
-              <div class="flex justify-between hover:bg-gray-200 mt-3">
-                <div class="w-5/6">
-                  {!child.isFoldered && (
-                    <div class="hidden sm:block w-1/5">{child.date}</div>
-                  )}
-                  <a href={child.url}>{child.title}</a>
-                </div>
-                <div class="w-1/6">
-                  {child.isLink && (
-                    <a class="linkButt" href={child.jsurl}>
-                      link
-                    </a>
-                  )}
-                </div>
-              </div>
-            ))}
+      return (
+        <div>
+          <div class="hover:bg-gray-200 mt-3">
+            <a href={group.parentUrl}>
+              <div>{group.folder}</div>
+              <div>{group.folderStartDate}</div>
+            </a>
           </div>
-        )}
-      </div>
-    ))
+
+          {group.children.length > 0 && !hasSelfAsChild && (
+            <div class="pl-4 border-l border-gray-600">
+              {group.children.map((child) => (
+                <div class="flex justify-between hover:bg-gray-200 mt-3">
+                  <div class="w-5/6">
+                    {!child.isFoldered && (
+                      <div class="hidden sm:block w-1/5">{child.date}</div>
+                    )}
+                    <a href={child.url}>{child.title}</a>
+                  </div>
+                  <div class="w-1/6">
+                    {child.isLink && (
+                      <a class="linkButt" href={child.jsurl}>
+                        link
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    })
   }
 </MainLayout>
