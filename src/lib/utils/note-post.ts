@@ -33,8 +33,10 @@ export function notePosts(): { posts: NotePost[]; tagsSet: string[] } {
       date: format(post.date, 'yyyy-MM-dd'),
     }));
 
+  const sortedTags = Array.from(tagsSet).sort();
+
   return {
     posts,
-    tagsSet: Array.from(tagsSet),
+    tagsSet: sortedTags,
   };
 }
