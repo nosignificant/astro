@@ -40,6 +40,7 @@ export function studyPosts(): StudyGroup[] {
     date: Date;
   }[] = [];
 
+  // slug split
   Object.entries(
     import.meta.glob('../../content/study/**/*.md', { eager: true }),
   ).forEach(([path, module]: [string, any]) => {
@@ -49,7 +50,11 @@ export function studyPosts(): StudyGroup[] {
     const parts = rawSlug.split('/');
 
     const slug = parts[parts.length - 1];
+
+    // 경로가 2번 이상 나뉘면 폴더 명 지정
     const folderName = parts.length > 1 ? parts[parts.length - 2] : '';
+
+    //
     const isFoldered = parts.length > 1 && slug !== folderName;
     const isRootFile = parts.length === 1;
     const rawDate = module.frontmatter.date;
@@ -57,7 +62,6 @@ export function studyPosts(): StudyGroup[] {
     const isLink = module.frontmatter?.isLink || false;
 
     if (isFoldered) {
-      // 자식 파일
       if (!folderMap[folderName]) {
         folderMap[folderName] = {
           folder: folderName,

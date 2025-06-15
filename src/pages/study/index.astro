@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro';
 import '../../styles/global.css';
-import { studyPosts, type FolderGroup } from '../../lib/utils/study-post';
+import { studyPosts, type StudyGroup } from '../../lib/utils/study-post';
 
 const posts = studyPosts();
 ---
@@ -9,6 +9,7 @@ const posts = studyPosts();
 <MainLayout>
   <div class="flex flex-col divide-y">
     {
+      //자식이 있는지 없는지 확인
       posts.map((group) => {
         const hasSelfAsChild =
           group.children.length === 1 &&
@@ -17,11 +18,11 @@ const posts = studyPosts();
         return (
           <div>
             {/* 상위 폴더 */}
-            <div class="flex justify-between items-center gap-4 py-2 hover:bg-gray-100">
+            <div class="entry-row ">
               <a href={group.parentUrl} class="flex-1 truncate">
                 {group.folder}
               </a>
-              <div class="text-sm text-gray-500 w-1/5 hidden sm:block">
+              <div class="text-gray-500 hidden sm:block pr-4">
                 {group.folderStartDate}
               </div>
             </div>
@@ -30,8 +31,8 @@ const posts = studyPosts();
             {group.children.length > 0 && !hasSelfAsChild && (
               <div class="pl-4 border-l border-gray-300">
                 {group.children.map((child) => (
-                  <div class="flex justify-between items-center gap-4 py-2 hover:bg-gray-50">
-                    <a href={child.url} class="flex-1 truncate">
+                  <div class="entry-row ">
+                    <a href={child.url} class="flex-1 truncate ">
                       {child.title}
                     </a>
                   </div>

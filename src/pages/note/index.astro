@@ -1,7 +1,7 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro';
 import { notePosts } from '../../lib/utils/note-post';
-
+import '../../styles/global.css';
 const posts = notePosts();
 ---
 
@@ -9,11 +9,11 @@ const posts = notePosts();
   <div class="flex flex-col divide-y">
     {
       posts.map(({ url, title, date }) => (
-        <div class="flex justify-between items-center gap-4 py-2 hover:bg-gray-100">
+        <div class="entry-row">
           <a href={url} class="flex-1 truncate">
             {title}
           </a>
-          <div class="text-sm text-gray-500 w-1/5 hidden sm:block">{date}</div>
+          <div class="text-gray-500 hidden sm:block pr-4">{date}</div>
         </div>
       ))
     }

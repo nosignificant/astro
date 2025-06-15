@@ -1,15 +1,22 @@
 @import './tailwind.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @font-face {
-  font-family: 'ChosunGu';
-  src: url('/fonts/ChosunGu.TTF') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Arita-buril';
+  src: url('/fonts/Arita-buriL.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Consolas';
+  src: url('/fonts/consola.ttf') format('truetype');
 }
 
 * {
-  font-family: 'ChosunGu', sans-serif;
+  font-family: 'Arita-buril', serif;
   color: black;
+  letter-spacing: 0.02em;
 }
 
 body {
@@ -20,7 +27,6 @@ pre {
   padding: 1rem;
   overflow-x: auto;
   overflow: scroll;
-  font-size: 0.9rem;
   line-height: 1.5;
 }
 
@@ -33,7 +39,7 @@ pre,
 code,
 pre code,
 pre span {
-  font-family: 'Courier New', monospace;
+  font-family: 'Consolas', monospace;
   background-color: rgb(236, 236, 236) !important;
   color: #333 !important;
 }
@@ -43,10 +49,17 @@ pre span {
   padding: 0 10px 0 10px;
 }
 
-.prose p {
-  font-size: 0.9rem;
-}
-
 .prose a:hover {
   color: rgb(137, 137, 137);
+}
+
+.entry-row {
+  @apply pl-2 flex justify-between items-center gap-4 py-2 hover:bg-gray-200;
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose li {
+  line-height: 1.8;
 }
