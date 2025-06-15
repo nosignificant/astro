@@ -7,43 +7,40 @@ const posts = studyPosts();
 ---
 
 <MainLayout>
-  {
-    posts.map((group) => {
-      const hasSelfAsChild =
-        group.children.length === 1 && group.children[0].title === group.folder;
+  <div class="flex flex-col divide-y">
+    {
+      posts.map((group) => {
+        const hasSelfAsChild =
+          group.children.length === 1 &&
+          group.children[0].title === group.folder;
 
-      return (
-        <div>
-          <div class="hover:bg-gray-200 mt-3">
-            <a href={group.parentUrl}>
-              <div>{group.folder}</div>
-              <div>{group.folderStartDate}</div>
-            </a>
-          </div>
-
-          {group.children.length > 0 && !hasSelfAsChild && (
-            <div class="pl-4 border-l border-gray-600">
-              {group.children.map((child) => (
-                <div class="flex justify-between hover:bg-gray-200 mt-3">
-                  <div class="w-5/6">
-                    {!child.isFoldered && (
-                      <div class="hidden sm:block w-1/5">{child.date}</div>
-                    )}
-                    <a href={child.url}>{child.title}</a>
-                  </div>
-                  <div class="w-1/6">
-                    {child.isLink && (
-                      <a class="linkButt" href={child.jsurl}>
-                        link
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+        return (
+          <div>
+            {/* 상위 폴더 */}
+            <div class="flex justify-between items-center gap-4 py-2 hover:bg-gray-100">
+              <a href={group.parentUrl} class="flex-1 truncate">
+                {group.folder}
+              </a>
+              <div class="text-sm text-gray-500 w-1/5 hidden sm:block">
+                {group.folderStartDate}
+              </div>
             </div>
-          )}
-        </div>
-      );
-    })
-  }
+
+            {/* 자식 파일 */}
+            {group.children.length > 0 && !hasSelfAsChild && (
+              <div class="pl-4 border-l border-gray-300">
+                {group.children.map((child) => (
+                  <div class="flex justify-between items-center gap-4 py-2 hover:bg-gray-50">
+                    <a href={child.url} class="flex-1 truncate">
+                      {child.title}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })
+    }
+  </div>
 </MainLayout>
