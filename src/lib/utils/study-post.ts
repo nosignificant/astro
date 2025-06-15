@@ -54,13 +54,16 @@ export function studyPosts(): StudyGroup[] {
     // 경로가 2번 이상 나뉘면 폴더 명 지정
     const folderName = parts.length > 1 ? parts[parts.length - 2] : '';
 
-    //
+    //  배열 끝부분과 -2부분이 다르면 자식 개체로 설정
     const isFoldered = parts.length > 1 && slug !== folderName;
+
+    // 길이가 1이면 폴더에 들어가지 않는 파일
     const isRootFile = parts.length === 1;
     const rawDate = module.frontmatter.date;
     const dateObj = new Date(rawDate);
     const isLink = module.frontmatter?.isLink || false;
 
+    //자식 파일
     if (isFoldered) {
       if (!folderMap[folderName]) {
         folderMap[folderName] = {
@@ -89,7 +92,6 @@ export function studyPosts(): StudyGroup[] {
         date: dateObj,
       });
     }
-    // ❌ slug === folderName 인 대표 파일은 처리하지 않는다.
   });
 
   // Group 형태로 통합
@@ -125,6 +127,6 @@ export function studyPosts(): StudyGroup[] {
       new Date(b.folderStartDate).getTime() -
       new Date(a.folderStartDate).getTime(),
   );
-
+  console.log([...groups]);
   return groups;
 }
