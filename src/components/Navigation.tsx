@@ -16,9 +16,6 @@ function slicePath(currentPath): string {
 
 export default function Navigation({ currentPath, Menus }: NavigationProps) {
   const [hovered, setHovered] = useState<string | null>(null);
-  useEffect(() => {
-    console.log('hovered changed:', hovered);
-  }, [hovered]);
 
   return (
     <div>

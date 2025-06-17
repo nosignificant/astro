@@ -4,6 +4,7 @@ import { useState } from 'react';
 export default function Filter() {
   const { posts, tagsSet } = notePosts();
   const [selectedTag, setSelectedTag] = useState(tagsSet);
+  let filterTag = [];
 
   function clearTags() {
     setSelectedTag(tagsSet);
