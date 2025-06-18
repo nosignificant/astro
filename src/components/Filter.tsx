@@ -29,7 +29,7 @@ export default function Filter() {
       console.log(firstSelected);
     }
     filterTag.push(tag);
-    setSelectedTag(filterTag);
+    setSelectedTag([...filterTag]);
   };
 
   return (
