@@ -1,31 +1,35 @@
-import { notePosts } from '../lib/utils/note-post';
-import { useState } from 'react';
+import { notePosts } from "../lib/utils/note-post";
+import { useState } from "react";
+
+let firstSelected = true;
+let filterTag = [];
 
 export default function Filter() {
   const { posts, tagsSet } = notePosts();
   const [selectedTag, setSelectedTag] = useState(tagsSet);
-  let filterTag = [];
 
   function clearTags() {
+    firstSelected = true;
     setSelectedTag(tagsSet);
   }
 
   function postFilter() {
     const filteredPosts = posts.filter((post) =>
-      selectedTag.some((tag) => post.tags.includes(tag)),
+      selectedTag.some((tag) => post.tags.includes(tag))
     );
-    console.log([...selectedTag]);
-    console.log([...filteredPosts]);
+    console.log("selected tag", [...selectedTag]);
+    console.log("filtered post", [...filteredPosts]);
     return filteredPosts;
   }
 
   const tagClicked = (tag: string) => {
-    setSelectedTag(
-      (prev) =>
-        prev.includes(tag)
-          ? prev.filter((t) => t !== tag) // 이미 있으면 제거
-          : [...prev, tag], // 없으면 추가
-    );
+    if (firstSelected) {
+      setSelectedTag([]);
+      firstSelected = false;
+      console.log(firstSelected);
+    }
+    filterTag.push(tag);
+    setSelectedTag(filterTag);
   };
 
   return (
@@ -34,15 +38,20 @@ export default function Filter() {
         {tagsSet.map((tag) => (
           <button
             key={tag}
-            className="flex flex-row pr-4 pb-2"
+            className="flex flex-row pr-4 pl-4 pd-2 border rounded-[30px] border-black hover:bg-gray-200"
             onClick={() => tagClicked(tag)}
           >
             {tag}
           </button>
         ))}
-        <a onClick={clearTags}>X</a>
+        <a
+          className=" pr-4 pl-4 pd-2 border rounded-[30px] border-black hover:bg-gray-200"
+          onClick={clearTags}
+        >
+          X
+        </a>
       </div>
-
+      <div className="mb-4" />
       {postFilter().map(({ url, title, date, tags }) => (
         <div key={url} className="entry-row">
           <a href={url} className="flex-1 truncate">
