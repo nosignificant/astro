@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/study/생물_만들어보기/0615.md",
+                "file": "src/content/note/인류는 생명체다.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0615"
+              "title": "인류는 생명체다"
             }
           }
         ]
@@ -170,14 +170,15 @@
   },
   "active": "6f111663c88aab1c",
   "lastOpenFiles": [
-    "src/content/note/인류는 생명체다.md",
     "src/content/note/재귀성과 우연성.md",
     "src/content/note/조각조각 아이디어.md",
+    "src/content/note/우스운 자의 꿈, 백야.md",
+    "src/content/note/인류는 생명체다.md",
+    "src/content/note/스웨덴 연설, 문학 비평.md",
+    "src/content/study/생물_만들어보기/0615.md",
     "src/content/note/조각조각 아이디어 1.md",
     "src/content/note/Computer Graphics_수업 복사본.md",
     "src/content/note/나중에 쓰고 싶은 거.md",
-    "src/content/note/우스운 자의 꿈, 백야.md",
-    "src/content/note/스웨덴 연설, 문학 비평.md",
     "src/content/note/세계는 이렇게 바뀐다, 수레바퀴 이후.md",
     "src/content/note/맨날까먹음.md",
     "src/content/study/web-development/2025-05-31.md",
