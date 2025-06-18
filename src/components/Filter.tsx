@@ -1,16 +1,16 @@
 import { notePosts } from "../lib/utils/note-post";
 import { useState } from "react";
 
-let firstSelected = true;
 let filterTag = [];
 
 export default function Filter() {
   const { posts, tagsSet } = notePosts();
-  const [selectedTag, setSelectedTag] = useState(tagsSet);
+  const [selectedTag, setSelectedTag] = useState<string[]>(tagsSet); // 초기에는 전체 보이게
+  const [firstSelected, setFirstSelected] = useState(true);
 
   function clearTags() {
-    firstSelected = true;
-    setSelectedTag(tagsSet);
+    setFirstSelected(true);
+    setSelectedTag(tagsSet); // 전체 보기
   }
 
   function postFilter() {
@@ -18,18 +18,21 @@ export default function Filter() {
       selectedTag.some((tag) => post.tags.includes(tag))
     );
     console.log("selected tag", [...selectedTag]);
-    console.log("filtered post", [...filteredPosts]);
     return filteredPosts;
   }
 
   const tagClicked = (tag: string) => {
-    if (firstSelected) {
-      setSelectedTag([]);
-      firstSelected = false;
-      console.log(firstSelected);
-    }
-    filterTag.push(tag);
-    setSelectedTag([...filterTag]);
+    setSelectedTag((prev) => {
+      if (firstSelected) {
+        setFirstSelected(false);
+        return [tag]; // 처음 클릭이면 이 tag만
+      }
+
+      // 이미 선택돼있으면 제거, 없으면 추가
+      return prev.includes(tag)
+        ? prev.filter((t) => t !== tag)
+        : [...prev, tag];
+    });
   };
 
   return (
