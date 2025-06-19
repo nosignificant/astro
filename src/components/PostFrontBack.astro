@@ -1,0 +1,27 @@
+---
+import { notePosts } from "../lib/utils/note-post";
+import '../styles/global.css';
+
+const currentPath = Astro.url.pathname.split('/');
+console.log("now path:",currentPath);
+
+const path = currentPath[currentPath.length-1];
+
+
+const { posts, tagsSet } = notePosts();
+console.log(posts);
+
+const currentIndex = posts.findIndex((post) => (post.title === path));
+
+console.log(currentIndex);
+
+const prevPost = posts[currentIndex - 1];
+const nextPost = posts[currentIndex + 1];
+---
+
+<div class="flex flex-row max-w-none">
+    <div class="border border-black">    {currentIndex!==-1 ? prevPost.title : "이전 글이 없습니다."}</div>
+
+    <a href={nextPost.url} class="border border-black">    {nextPost.title} {nextPost.date}</div>
+
+</div>
