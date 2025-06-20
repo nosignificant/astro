@@ -1,5 +1,5 @@
-import { notePosts } from "../lib/utils/note-post";
-import { useState, useEffect } from "react";
+import { notePosts } from '../lib/utils/note-post';
+import { useState, useEffect } from 'react';
 
 let filterTag = [];
 
@@ -22,7 +22,7 @@ export default function Filter() {
 
   function postFilter() {
     const filteredPosts = posts.filter((post) =>
-      selectedTag.some((tag) => post.tags.includes(tag))
+      selectedTag.some((tag) => post.tags.includes(tag)),
     );
     //console.log("selected tag", [...selectedTag]);
     return filteredPosts;
@@ -43,15 +43,15 @@ export default function Filter() {
   };
 
   return (
-    <div className="flex flex-col divide-y filter">
-      <div className="flex flex-wrap">
+    <div className="flex flex-col ">
+      <div className="flex flex-wrap gap-1">
         {tagsSet.map((tag) => {
           const isSelected = selectedTag.includes(tag) && !firstSelected;
           return (
             <button
               key={tag}
               className={`flex flex-row pr-4 pl-4 pd-2 rounded-[30px] border 
-        ${isSelected ? "bg-gray-200" : "border-black"}`}
+        ${isSelected ? 'bg-gray-200' : 'border-black'}`}
               onClick={() => tagClicked(tag)}
             >
               {tag}
@@ -59,28 +59,30 @@ export default function Filter() {
           );
         })}
         <a
-          className=" text-[0.7rem] text-gray-700 pr-2 pl-2 "
+          className=" text-[0.7rem] text-gray-700 pr-2 pl-2 pt-1"
           onClick={clearTags}
         >
           필터 초기화
         </a>
       </div>
       <div className="mb-4" />
-      {postFilter().map(({ url, title, date, tags }) => (
-        <div key={url} className="entry-row">
-          <a href={url} className="flex-1 truncate ">
-            {title}
-            <div className="flex flex-row">
-              {tags.map((tag) => (
-                <div key={tag} className="text-gray-500 text-sm pr-2 ">
-                  {tag}
-                </div>
-              ))}
-            </div>
-          </a>
-          <div className="text-gray-500 hidden sm:block pr-4">{date}</div>
-        </div>
-      ))}
+      <div className="divide-y">
+        {postFilter().map(({ url, title, date, tags }) => (
+          <div key={url} className="entry-row ">
+            <a href={url} className="flex-1 truncate ">
+              {title}
+              <div className="flex flex-row">
+                {tags.map((tag) => (
+                  <div key={tag} className="text-gray-500 text-sm pr-2 ">
+                    {tag}
+                  </div>
+                ))}
+              </div>
+            </a>
+            <div className="text-gray-500 hidden sm:block pr-4">{date}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,27 +1,56 @@
 ---
-import { notePosts } from "../lib/utils/note-post";
+import { notePosts } from '../lib/utils/note-post';
 import '../styles/global.css';
 
-const currentPath = Astro.url.pathname.split('/');
-console.log("now path:",currentPath);
-
-const path = currentPath[currentPath.length-1];
-
+const currentPath: string[] = decodeURIComponent(Astro.url.pathname).split('/');
+const path = currentPath[currentPath.length - 1];
+console.log(path);
 
 const { posts, tagsSet } = notePosts();
-console.log(posts);
 
-const currentIndex = posts.findIndex((post) => (post.title === path));
+const currentIndex = posts.findIndex((post) => post.title === path);
 
 console.log(currentIndex);
 
 const prevPost = posts[currentIndex - 1];
 const nextPost = posts[currentIndex + 1];
+
+const isPrevIndex = currentIndex ? currentIndex !== 0 : false;
+const isNextIndex = currentIndex !== posts.length - 1;
+
+console.log('isPrevIndex, isNextIndex', isPrevIndex, isNextIndex);
 ---
 
-<div class="flex flex-row max-w-none">
-    <div class="border border-black">    {currentIndex!==-1 ? prevPost.title : "이전 글이 없습니다."}</div>
+<div class="mt-10"></div>
 
-    <a href={nextPost.url} class="border border-black">    {nextPost.title} {nextPost.date}</div>
+<div
+  class="flex justify-between items-start gap-4 border-y border-gray border-solid py-4"
+>
+  <div class="w-1/2">
+    <div class="mb-2 font-semibold">Next Post</div>
+    {
+      isPrevIndex ? (
+        <a href={prevPost.url} class="block">
+          <div>{prevPost.title}</div>
+          <div class="text-gray-500 text-sm">{prevPost.date}</div>
+        </a>
+      ) : (
+        <div class="text-gray-500 text-sm">이전 글이 없습니다.</div>
+      )
+    }
+  </div>
 
+  <div class="w-1/2 flex flex-col items-end">
+    <div class="mb-2 font-semibold">Previous Post</div>
+    {
+      isNextIndex ? (
+        <a href={nextPost.url} class="block flex flex-col">
+          <div>{nextPost.title}</div>
+          <div class="text-gray-500 text-sm ml-auto">{nextPost.date}</div>
+        </a>
+      ) : (
+        <div class="text-gray-500 text-sm">다음 글이 없습니다.</div>
+      )
+    }
+  </div>
 </div>

@@ -54,7 +54,7 @@ pre span {
 }
 
 .entry-row {
-  @apply pl-2 flex justify-between items-center gap-4 py-2 hover:bg-gray-200;
+  @apply pl-2 flex justify-between items-center gap-4 py-2;
 }
 
 .prose p,
