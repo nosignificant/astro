@@ -2,13 +2,11 @@
 import { notePosts } from '../lib/utils/note-post';
 import '../styles/global.css';
 
-const currentPath: string[] = decodeURIComponent(Astro.url.pathname).split('/');
-const path = currentPath[currentPath.length - 1];
-console.log(path);
+const { slug } = Astro.props;
+const { posts } = notePosts();
+const decodedSlug = decodeURIComponent(slug);
 
-const { posts, tagsSet } = notePosts();
-
-const currentIndex = posts.findIndex((post) => post.title === path);
+const currentIndex = posts.findIndex((post) => post.title === decodedSlug);
 
 console.log(currentIndex);
 

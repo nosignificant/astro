@@ -22,14 +22,15 @@ export async function getStaticPaths() {
 }
 
 const { title, Content, description } = Astro.props;
+const { slug } = Astro.params;
 ---
 
 <MainLayout pageTitle={title} description={description}>
   <article class="prose max-w-none">
     <Content />
   </article>
-  <PostFrontBack/>
-  <div class="mt-[100px]"> </div>
+  <PostFrontBack slug={decodeURIComponent(slug)} />
+  <div class="mt-[100px]"></div>
 
   <FooterNavi />
 </MainLayout>
