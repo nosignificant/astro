@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import p5 from 'p5';
 
-// 기존 클래스 import
 import Cell from './cell.js';
 import Enemy from './\benemy.js';
 import BackCircle from './BackCircle.js';
