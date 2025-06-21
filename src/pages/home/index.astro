@@ -14,16 +14,16 @@ const posts = Object.entries(
   const urls = `/${parts[0]}/${parts[1]}`;
   return { title: parts[1], part: parts[0], url: urls };
 });
-//  <img src="/img/name.png" class="block w-auto scale-y-75" alt="" />
+//
 ---
 
 <html lang="en">
   <head>
     <BaseHead />
   </head>
-
   <body>
-    <div class="flex justify-center z-1">
+    <img src="/img/name.png" class="block w-auto scale-y-75" alt="" />
+    <div class="flex justify-center z-1 text-lg">
       <div
         class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
       >
@@ -38,10 +38,7 @@ const posts = Object.entries(
                       <div>
                         <div class="flex flex-row mb-1 mt-4 ">
                           {' '}
-                          <a
-                            class="underline hover:bg-gray-200"
-                            href={menu.url}
-                          >
+                          <a class="hover:bg-white" href={menu.url}>
                             {menu.name}
                           </a>
                           <div class="pl-4 text-gray-400">
@@ -55,7 +52,7 @@ const posts = Object.entries(
                             .slice(0, 2)
                             .map((post) => (
                               <a
-                                class="mt-1 mb-1 ml-4 hover:bg-gray-200"
+                                class="mt-1 mb-1 ml-4 hover:bg-white"
                                 href={post.url}
                               >
                                 {post.title}

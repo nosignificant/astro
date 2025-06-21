@@ -10,11 +10,11 @@
 
 @font-face {
   font-family: 'Pretendard';
-  src: url('/fonts/Pretendard-Regular.otf') format('opentype');
+  src: url('/fonts/Pretendard-Light.otf') format('opentype');
 }
 @font-face {
-  font-family: 'CriollaSans';
-  src: url('/fonts/CriollaSansv0.8Trial-RegularStd.otf') format('opentype');
+  font-family: 'Backslanted';
+  src: url('/fonts/Backslanted-Regular-v02-Web.ttf') format('truetype');
 }
 
 @font-face {
@@ -23,14 +23,14 @@
 }
 
 * {
-  font-family: 'Pretendard', serif;
   color: black;
   letter-spacing: 0.02em;
 }
 
 body {
-  background-color: white;
-  //background-color: rgb(247, 247, 247);
+  font-family: 'Pretendard', serif;
+
+  background-color: rgb(210, 210, 210);
   margin: 0;
   padding: 0;
 }
@@ -82,6 +82,6 @@ h3 {
   font-family: Arita-buri;
 }
 
-.filter {
-  font-family: CriollaSans;
+.Backslanted {
+  font-family: Backslanted !important;
 }

@@ -38,7 +38,6 @@ export default function P5Sketch() {
       };
 
       p.draw = () => {
-        p.background(255);
         b.drawBackCircle(p.windowWidth, 20, p);
         enemy.draw(p, p.mouseX, p.mouseY);
         foods.drawFood(p, 7);

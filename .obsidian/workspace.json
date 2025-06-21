@@ -170,6 +170,12 @@
   },
   "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
+    "public/img/name.png",
+    "public/img/Asset 1.png",
+    "public/fonts/Backslanted-Regular-v02-Web.ttf",
+    "public/fonts/Rockwell.ttc",
+    "public/fonts/Pretendard-Light.otf",
+    "public/fonts/CanonGrotesqueV0.1Trial-Medium.otf",
     "().md",
     "src/content/study/생물_만들어보기/6월 3주.md",
     "src/content/study/생물_만들어보기/생물_만들어보기.md",
@@ -184,18 +190,12 @@
     "src/content/note/나중에 쓰고 싶은 거.md",
     "1x/Asset 1.png",
     "1x",
-    "public/img/Asset 1.png",
     "public/fonts/AritaSans-Medium.otf",
     "public/fonts/Arita-buriB.otf",
     "public/fonts/CriollaSansv0.8Trial-RegularStd.otf",
-    "public/img/name.png",
     "public/img",
     "public/fonts/Pretendard-Regular.otf",
-    "public/snake-game/Pretendard-Regular.otf",
     "src/content/study/web-development/6월 3주.md",
-    "src/components/cell/p5sketch.jsx",
-    "node_modules/@types/p5/src/core/shape/curves.d.ts",
-    "node_modules/@types/p5/src/core/shape/vertex.d.ts",
     "node_modules/@types/p5/README.md",
     "node_modules/p5/translations/ko/README.md",
     "node_modules/p5/README.md",
@@ -208,7 +208,6 @@
     "src/content/study/web-development/0601,  0615, 0618.md",
     "src/content/note/카뮈, 도스토예프스키.md",
     "src/content/note/Untitled.md",
-    "src/content/note/조각조각 아이디어 1.md",
-    "src/content/note/Computer Graphics_수업 복사본.md"
+    "src/content/note/조각조각 아이디어 1.md"
   ]
 }
