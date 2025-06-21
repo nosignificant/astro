@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/study/web-development/web-development.md",
+                "file": "src/content/study/생물_만들어보기/6월 3주.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "web-development"
+              "title": "6월 3주"
             }
           }
         ]
@@ -170,6 +170,9 @@
   },
   "active": "6f111663c88aab1c",
   "lastOpenFiles": [
+    "src/content/study/생물_만들어보기/생물_만들어보기.md",
+    "src/content/study/생물_만들어보기/6월 3주.md",
+    "src/content/study/web-development/web-development.md",
     "src/content/study/web-development/6월 3주.md",
     "src/components/PostFrontBack.astro",
     "src/components/PostFrontBack.tsx",
@@ -184,7 +187,6 @@
     "src/content/note/스웨덴 연설, 문학 비평.md",
     "src/content/note/세계는 이렇게 바뀐다, 수레바퀴 이후.md",
     "src/content/note/Untitled.md",
-    "src/content/study/생물_만들어보기/0615.md",
     "src/content/note/조각조각 아이디어 1.md",
     "src/content/note/Computer Graphics_수업 복사본.md",
     "src/content/note/나중에 쓰고 싶은 거.md",
@@ -192,7 +194,6 @@
     "src/content/study/web-development/2025-05-31.md",
     "src/content/study/web-development/2025-06-01.md",
     "2025-04-14.md",
-    "src/content/study/web-development/web-development.md",
     "src/content/study/미래에 만들고 싶은 것.md",
     "src/content/study/brick-break.md",
     "src/content/study/snake-game.md"
