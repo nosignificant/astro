@@ -40,9 +40,9 @@ export default class Cell {
     }
 
     if (this.fear > 0) {
-      this.closeEnemies.forEach((enemy) =>
-        force = this.util.dist(enemy.x, enemy.y, this.x, this.y);
-        this.util.towards(this, 100/force, enemy, false),
+      this.closeEnemies.forEach(
+        (enemy) => (force = this.util.dist(enemy.x, enemy.y, this.x, this.y)),
+        this.util.towards(this, 100 / force, enemy, false),
       );
       this.color = [0, 255, 255];
     } else {

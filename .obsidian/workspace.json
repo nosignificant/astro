@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "8fbb0d6849e1a090",
+        "id": "cd81afe0cbfe5c51",
         "type": "tabs",
         "children": [
           {
-            "id": "6f111663c88aab1c",
+            "id": "a54d0778fb1eca21",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "src/content/study/생물_만들어보기/6월 3주.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "6월 3주"
+              "title": "New tab"
             }
           }
         ]
@@ -168,8 +164,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f111663c88aab1c",
+  "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
+    "src/content/study/생물_만들어보기/6월 3주.md",
     "src/content/study/생물_만들어보기/생물_만들어보기.md",
     "1x/Asset 1.png",
     "1x",
@@ -181,7 +178,6 @@
     "public/img",
     "public/fonts/Pretendard-Regular.otf",
     "public/snake-game/Pretendard-Regular.otf",
-    "src/content/study/생물_만들어보기/6월 3주.md",
     "src/content/study/web-development/6월 3주.md",
     "src/components/cell/p5sketch.jsx",
     "node_modules/@types/p5/src/core/shape/curves.d.ts",
