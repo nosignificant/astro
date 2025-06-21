@@ -1,6 +1,4 @@
-import p5 from "p5";
-
-export class BackCircle {
+export default class BackCircle {
   constructor() {
     this.backCircle = [];
   }
@@ -13,7 +11,7 @@ export class BackCircle {
         const cx = stepX * i + stepX / 2;
         const cy = stepX * j + stepX / 2;
         p.fill(0);
-        p.ellipse(cx, cy, 5);
+        //p.ellipse(cx, cy, 5);
         this.backCircle.push(p.createVector(cx, cy));
       }
     }

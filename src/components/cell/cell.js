@@ -1,6 +1,6 @@
-import p5 from "p5";
+import p5 from 'p5';
 
-export class Cell {
+export default class Cell {
   constructor(x, y) {
     // 위치 및 생명력
     this.x = x;

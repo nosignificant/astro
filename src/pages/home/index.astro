@@ -3,6 +3,7 @@ import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { Menus } from '../../lib/data/menus';
+import P5Sketch from '../../components/cell/p5sketch.jsx';
 
 const posts = Object.entries(
   import.meta.glob('../../content/**/*.md', { eager: true }),
@@ -18,13 +19,13 @@ const posts = Object.entries(
   <head>
     <BaseHead />
   </head>
-  <body class="flex justify-center">
+
+  <body class="flex justify-center z-1">
     <div
       class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
     >
       <div class="mt-[100px]"></div>
-      <h2>안녕하세요.</h2>
-      <div>최근 메모, 기록들</div>
+
       <div class="mt-[10px]"></div>
       <div class="flex flex-col">
         <div>
@@ -60,7 +61,12 @@ const posts = Object.entries(
           }
         </div>
       </div>
+
       <Footer />
     </div>
-  </body>
+  </body><div
+    class="fixed top-0 left-0 -z-10 pointer-events-none w-full h-full"
+  >
+    <P5Sketch client:only="react" />
+  </div>
 </html>

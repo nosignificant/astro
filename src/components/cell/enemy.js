@@ -1,6 +1,4 @@
-import p5 from "p5";
-
-export class Enemy {
+export default class Enemy {
   constructor(x, y) {
     this.x = x;
     this.y = y;

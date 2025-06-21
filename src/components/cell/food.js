@@ -1,6 +1,4 @@
-import p5 from "p5";
-
-export class Food {
+export default class Food {
   constructor() {
     this.food = [];
   }
