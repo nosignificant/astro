@@ -170,6 +170,13 @@
   },
   "active": "6f111663c88aab1c",
   "lastOpenFiles": [
+    "src/components/cell/utils.js",
+    "src/components/cell/main.js",
+    "src/components/cell/food.js",
+    "src/components/cell/\benemy.js",
+    "src/components/cell/cell.js",
+    "src/components/cell/BackCircle.js",
+    "src/components/cell",
     "src/content/study/생물_만들어보기/생물_만들어보기.md",
     "src/content/study/생물_만들어보기/6월 3주.md",
     "src/content/study/web-development/web-development.md",
