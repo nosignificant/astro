@@ -4,6 +4,7 @@ import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { Menus } from '../../lib/data/menus';
 import P5Sketch from '../../components/cell/p5sketch.jsx';
+import FooterNavi from '../../components/FooterNavi.astro';
 
 const posts = Object.entries(
   import.meta.glob('../../content/**/*.md', { eager: true }),
@@ -27,41 +28,8 @@ const posts = Object.entries(
       <div class="mt-[100px]"></div>
 
       <div class="mt-[10px]"></div>
-      <div class="flex flex-col">
-        <div>
-          {
-            Menus.map((menu) => {
-              if (menu.name != 'nosignificant')
-                return (
-                  <div>
-                    <div class="flex flex-row mb-1 mt-4 ">
-                      {' '}
-                      <a class="underline hover:bg-gray-200" href={menu.url}>
-                        {menu.name}
-                      </a>
-                      <div class="pl-4 text-gray-400">{menu.description}</div>
-                    </div>
-
-                    <div class="flex flex-col border-l border-gray-600 ">
-                      {posts
-                        .filter((post) => post.part === menu.name)
-                        .slice(0, 2)
-                        .map((post) => (
-                          <a
-                            class="mt-1 mb-1 ml-4 hover:bg-gray-200"
-                            href={post.url}
-                          >
-                            {post.title}
-                          </a>
-                        ))}
-                    </div>
-                  </div>
-                );
-            })
-          }
-        </div>
-      </div>
-
+      <div class="flex flex-col"></div>
+      <FooterNavi />
       <Footer />
     </div>
   </body><div
