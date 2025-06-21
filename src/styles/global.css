@@ -4,8 +4,17 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Arita-buril';
+  font-family: 'Arita-buri';
   src: url('/fonts/Arita-buriL.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('/fonts/Pretendard-Regular.otf') format('opentype');
+}
+@font-face {
+  font-family: 'CriollaSans';
+  src: url('/fonts/CriollaSansv0.8Trial-RegularStd.otf') format('opentype');
 }
 
 @font-face {
@@ -14,13 +23,16 @@
 }
 
 * {
-  font-family: 'Arita-buril', serif;
+  font-family: 'Pretendard', serif;
   color: black;
   letter-spacing: 0.02em;
 }
 
 body {
-  background-color: rgb(247, 247, 247);
+  background-color: white;
+  //background-color: rgb(247, 247, 247);
+  margin: 0;
+  padding: 0;
 }
 
 pre {
@@ -62,4 +74,14 @@ pre span {
 .prose ol,
 .prose li {
   line-height: 1.8;
+}
+
+.prose h1,
+h2,
+h3 {
+  font-family: Arita-buri;
+}
+
+.filter {
+  font-family: CriollaSans;
 }

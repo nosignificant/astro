@@ -43,7 +43,7 @@ export default function Filter() {
   };
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <div className="flex flex-wrap gap-1">
         {tagsSet.map((tag) => {
           const isSelected = selectedTag.includes(tag) && !firstSelected;

@@ -21,20 +21,61 @@ const posts = Object.entries(
     <BaseHead />
   </head>
 
-  <body class="flex justify-center z-1">
-    <div
-      class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
-    >
-      <div class="mt-[100px]"></div>
+  <body>
+    <img src="/img/name.png" class="block w-auto scale-y-75" alt="" />
+    <div class="flex justify-center z-1">
+      <div
+        class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
+      >
+        <div class="mt-[100px]">
+          <div class="mt-[10px]"></div>
+          <div class="flex flex-col">
+            <div>
+              {
+                Menus.map((menu) => {
+                  if (menu.name != 'nosignificant')
+                    return (
+                      <div>
+                        <div class="flex flex-row mb-1 mt-4 ">
+                          {' '}
+                          <a
+                            class="underline hover:bg-gray-200"
+                            href={menu.url}
+                          >
+                            {menu.name}
+                          </a>
+                          <div class="pl-4 text-gray-400">
+                            {menu.description}
+                          </div>
+                        </div>
 
-      <div class="mt-[10px]"></div>
-      <div class="flex flex-col"></div>
-      <FooterNavi />
-      <Footer />
+                        <div class="flex flex-col border-l border-gray-600 ">
+                          {posts
+                            .filter((post) => post.part === menu.name)
+                            .slice(0, 2)
+                            .map((post) => (
+                              <a
+                                class="mt-1 mb-1 ml-4 hover:bg-gray-200"
+                                href={post.url}
+                              >
+                                {post.title}
+                              </a>
+                            ))}
+                        </div>
+                      </div>
+                    );
+                })
+              }
+            </div>
+          </div>
+          <FooterNavi />
+          <Footer />
+        </div>
+      </div>
+    </div><div
+      class="fixed top-0 left-0 -z-10 pointer-events-none w-full h-full"
+    >
+      <P5Sketch client:only="react" />
     </div>
-  </body><div
-    class="fixed top-0 left-0 -z-10 pointer-events-none w-full h-full"
-  >
-    <P5Sketch client:only="react" />
-  </div>
+  </body>
 </html>
