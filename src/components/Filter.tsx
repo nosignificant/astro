@@ -51,7 +51,7 @@ export default function Filter() {
             <button
               key={tag}
               className={`flex flex-row pr-4 pl-4 pd-2 rounded-[30px] border 
-        ${isSelected ? 'bg-gray-200' : 'border-black'}`}
+        ${isSelected ? 'border-black bg-white' : 'border-black hover:bg-white'}`}
               onClick={() => tagClicked(tag)}
             >
               {tag}
@@ -68,7 +68,7 @@ export default function Filter() {
       <div className="mb-4" />
       <div className="divide-y">
         {postFilter().map(({ url, title, date, tags }) => (
-          <div key={url} className="entry-row ">
+          <div key={url} className="entry-row hover:bg-white">
             <a href={url} className="flex-1 truncate ">
               {title}
               <div className="flex flex-row">

@@ -30,7 +30,7 @@
 body {
   font-family: 'Pretendard', serif;
 
-  background-color: rgb(210, 210, 210);
+  background-color: rgb(241, 241, 241);
   margin: 0;
   padding: 0;
 }
@@ -62,7 +62,7 @@ pre span {
 }
 
 .prose a:hover {
-  color: rgb(137, 137, 137);
+  color: rgb(190, 190, 190);
 }
 
 .entry-row {
