@@ -1,6 +1,9 @@
 import p5 from 'p5';
+import Utils from './utils';
 
 export default class Cell {
+  util = new Utils();
+
   constructor(x, y) {
     // 위치 및 생명력
     this.x = x;
@@ -76,20 +79,21 @@ export default class Cell {
     // 연결 선
     p.stroke(0, 0, 255);
     this.closeCells.forEach((other) => {
-      p.line(this.x, this.y, other.x, other.y);
+      //  p.line(this.x, this.y, other.x, other.y);
     });
   }
 
   applySpacingForce() {
-    const strength = 0.05;
+    const strength = 0.1;
 
     this.closeCells.forEach((other) => {
       const minDist = this.health;
       const maxDist = other.health * 2;
+      const dist = this.util.dist(other.x, other.y, this.x, this.y);
 
       const dx = other.x - this.x;
       const dy = other.y - this.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
+
       if (dist === 0) return;
 
       const offsetX = dx / dist;
@@ -105,5 +109,22 @@ export default class Cell {
         this.y += offsetY * diff * strength;
       }
     });
+  }
+
+  drawLeg(backCircleArray, p) {
+    const { closest, secondClosest } = this.util.closestObj(
+      backCircleArray,
+      this,
+    );
+    console.log('a: ', closest, 'b: ', secondClosest);
+    if (closest) {
+      p.stroke(0); // 검은색 선
+      p.line(this.x, this.y, closest.x, closest.y);
+    }
+
+    if (closest && secondClosest) {
+      p.stroke(0, 0, 255); // 파란색 선
+      p.line(closest.x, closest.y, secondClosest.x, secondClosest.y);
+    }
   }
 }

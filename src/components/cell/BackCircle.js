@@ -12,7 +12,10 @@ export default class BackCircle {
         const cy = stepX * j + stepX / 2;
         p.fill(0);
         //p.ellipse(cx, cy, 5);
-        this.backCircle.push(p.createVector(cx, cy));
+        const exists = this.backCircle.some((v) => v.x === cx && v.y === cy);
+        if (!exists) {
+          this.backCircle.push(p.createVector(cx, cy));
+        }
       }
     }
   }

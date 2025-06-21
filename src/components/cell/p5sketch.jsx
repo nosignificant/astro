@@ -16,7 +16,7 @@ export default function P5Sketch() {
 
     const sketch = (p) => {
       const enemy = new Enemy(p.mouseX, p.mouseY);
-      const backCircle = new BackCircle();
+      const b = new BackCircle();
       const foods = new Food();
 
       for (let i = 0; i < 10; i++) {
@@ -39,7 +39,7 @@ export default function P5Sketch() {
 
       p.draw = () => {
         p.background(255);
-        backCircle.drawBackCircle(p.windowWidth, 20, p);
+        b.drawBackCircle(p.windowWidth, 100, p);
         enemy.draw(p, p.mouseX, p.mouseY);
         foods.drawFood(p, 7);
 
@@ -48,6 +48,7 @@ export default function P5Sketch() {
           cell.checkCloseCell(allCells, p);
           cell.update();
           cell.draw(p);
+          cell.drawLeg(b.backCircle, p);
         });
       };
     };
