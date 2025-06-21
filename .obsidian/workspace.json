@@ -11,10 +11,14 @@
             "id": "a54d0778fb1eca21",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "src/content/study/생물_만들어보기/6월 3주.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "6월 3주"
             }
           }
         ]
@@ -166,8 +170,18 @@
   },
   "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
+    "().md",
     "src/content/study/생물_만들어보기/6월 3주.md",
     "src/content/study/생물_만들어보기/생물_만들어보기.md",
+    "src/content/study/web-development/web-development.md",
+    "src/content/note/맨날까먹음.md",
+    "src/content/note/조각조각 아이디어.md",
+    "src/content/note/재귀성과 우연성.md",
+    "src/content/note/인류는 생명체다.md",
+    "src/content/note/우스운 자의 꿈, 백야.md",
+    "src/content/note/스웨덴 연설, 문학 비평.md",
+    "src/content/note/세계는 이렇게 바뀐다, 수레바퀴 이후.md",
+    "src/content/note/나중에 쓰고 싶은 거.md",
     "1x/Asset 1.png",
     "1x",
     "public/img/Asset 1.png",
@@ -191,19 +205,10 @@
     "node_modules/react-p5/README.md",
     "node_modules/react-p5/CODE_OF_CONDUCT.md",
     "node_modules/react-p5/CHANGELOG.md",
-    "src/content/study/web-development/web-development.md",
     "src/content/study/web-development/0601,  0615, 0618.md",
     "src/content/note/카뮈, 도스토예프스키.md",
-    "src/content/note/조각조각 아이디어.md",
-    "src/content/note/재귀성과 우연성.md",
-    "src/content/note/인류는 생명체다.md",
-    "src/content/note/우스운 자의 꿈, 백야.md",
-    "src/content/note/스웨덴 연설, 문학 비평.md",
-    "src/content/note/세계는 이렇게 바뀐다, 수레바퀴 이후.md",
     "src/content/note/Untitled.md",
     "src/content/note/조각조각 아이디어 1.md",
-    "src/content/note/Computer Graphics_수업 복사본.md",
-    "src/content/note/나중에 쓰고 싶은 거.md",
-    "src/content/note/맨날까먹음.md"
+    "src/content/note/Computer Graphics_수업 복사본.md"
   ]
 }
