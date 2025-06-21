@@ -1,5 +1,3 @@
-import p5 from 'p5';
-
 export default class utils {
   drawPolygon(x, y, radius, sides, p) {
     const angleStep = p.TWO_PI / sides;
@@ -42,8 +40,19 @@ export default class utils {
     return { closest, secondClosest };
   }
 
-  towards(obj, force, other) {
-    obj.x += offsetX * diff * force;
-    obj.y += offsetY * diff * force;
+  towards(obj, force, other, attract = true) {
+    const dx = other.x - obj.x;
+    const dy = other.y - obj.y;
+    const dist = this.dist(other.x, other.y, obj.x, obj.y);
+    if (dist === 0) return;
+
+    const offsetX = dx / dist;
+    const offsetY = dy / dist;
+
+    const direction = attract ? 1 : -1;
+
+    obj.x += offsetX * force * direction;
+    obj.y += offsetY * force * direction;
+    return obj;
   }
 }

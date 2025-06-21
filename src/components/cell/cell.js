@@ -39,8 +39,12 @@ export default class Cell {
       this.fear += 0.1;
     }
 
-    if (this.fear > 0.1) {
-      this.color = [0, 0, 255];
+    if (this.fear > 0) {
+      this.closeEnemies.forEach((enemy) =>
+        force = this.util.dist(enemy.x, enemy.y, this.x, this.y);
+        this.util.towards(this, 100/force, enemy, false),
+      );
+      this.color = [0, 255, 255];
     } else {
       this.color = [255, 255, 255];
     }
@@ -84,29 +88,21 @@ export default class Cell {
   }
 
   applySpacingForce() {
-    const strength = 0.1;
+    const strength = 0.001;
 
     this.closeCells.forEach((other) => {
       const minDist = this.health;
-      const maxDist = other.health * 2;
+      const maxDist = other.health;
       const dist = this.util.dist(other.x, other.y, this.x, this.y);
-
-      const dx = other.x - this.x;
-      const dy = other.y - this.y;
 
       if (dist === 0) return;
 
-      const offsetX = dx / dist;
-      const offsetY = dy / dist;
-
       if (dist < minDist) {
         const diff = minDist - dist;
-        this.x -= offsetX * diff * strength;
-        this.y -= offsetY * diff * strength;
+        this.util.towards(this, strength * diff, other, false); // 밀어냄
       } else if (dist > maxDist) {
         const diff = dist - maxDist;
-        this.x += offsetX * diff * strength;
-        this.y += offsetY * diff * strength;
+        this.util.towards(this, strength * diff, other, true); // 끌어당김
       }
     });
   }
