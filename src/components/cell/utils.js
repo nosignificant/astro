@@ -37,10 +37,4 @@ export default class utils {
       }
     });
   }
-  checkObjGoaway(storeArr) {
-    storeArr = storeArr.filter((enemy) => {
-      const d = this.dist(this.x, this.y, enemy.x, enemy.y);
-      return d <= 10;
-    });
-  }
 }

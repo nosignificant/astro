@@ -12,6 +12,7 @@ export default function P5Sketch() {
   useEffect(() => {
     const allCells = [];
     const allEnemies = [];
+    let currentGroupId = 0;
 
     const sketch = (p) => {
       const enemy = new Enemy(p.mouseX, p.mouseY);
@@ -45,7 +46,11 @@ export default function P5Sketch() {
         allCells.forEach((cell) => {
           cell.checkCloseEnemy(allEnemies);
           cell.checkCloseCell(allCells, p);
-          cell.update();
+          if (!cell.inGroup && cell.closeCells.length > 2) {
+            currentGroupId += 1;
+            cell.tryJoinGroup(currentGroupId, allCells);
+          }
+          cell.update(allCells);
           cell.draw(p);
           cell.drawLeg(b.backCircle, p);
         });

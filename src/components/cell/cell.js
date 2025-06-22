@@ -8,13 +8,18 @@ export default class Cell {
     // 위치 및 생명력
     this.x = x;
     this.y = y;
-    this.character = 10;
+    this.character = 5;
+    this.strength = 0.001;
+    this.creatureSTR = 0.1;
     //Math.floor(Math.random() * 10);
     this.health = 10 * this.character;
     this.near = 200;
-
+    this.cells = false;
     // 내부 상태
-    this.curiosity = 0;
+
+    this.inGroup = false;
+    this.groupId = null;
+
     this.fear = 0;
     this.color = [255, 255, 255];
 
@@ -30,72 +35,75 @@ export default class Cell {
     p.ellipse(this.x, this.y, this.health);
   }
 
-  update() {
-    this.applySpacingForce();
-    this.fearAction();
-  }
-
-  fearAction() {
-    if (this.closeEnemies.length > 0) {
-      this.fear += 0.1;
-      this.closeEnemies.forEach((enemy) =>
-        this.util.towards(this, 0.1, enemy, false),
-      );
+  update(allCells) {
+    if (!this.inGroup) {
+      this.applySpacingForce(allCells, this.strength);
+      this.fearAction();
     } else {
-      if (this.fear > 0) {
-      }
-      this.fear -= 0.1;
-    }
-
-    if (this.fear > 0) {
-      this.color = [0, 255, 255];
-    } else {
-      this.color = [255, 255, 255];
+      this.applySpacingForce(allCells, this.creatureSTR);
+      this.fearAction();
     }
   }
-  checkEnemyGoaway() {
-    this.util.checkObjGoaway(this.closeEnemies);
+
+  tryJoinGroup(groupId, allCells) {
+    if (this.closeCells.length > 2) {
+      this.inGroup = true;
+      this.groupId = groupId;
+      this.closeCells.forEach((cell) => {
+        if (!cell.inGroup) {
+          cell.inGroup = true;
+          cell.groupId = groupId;
+        }
+      });
+    }
   }
-  checkCellGoaway() {
-    this.util.checkObjGoaway(this.closeCells);
+  asOneCreature() {
+    if (this.closeCells.length > 2) {
+      this.applySpacingForce(0.01);
+
+      console.log('this close', this.closeCells.length);
+      this.cells = true;
+      this.closeCells.forEach((other) => {
+        p.line(this.x, this.y, other.x, other.y);
+      });
+    }
   }
+
   checkCloseEnemy(enemies) {
     this.closeEnemies = [];
-
     this.util.checkNearObj(enemies, this.closeEnemies, this);
-    this.checkEnemyGoaway();
   }
 
   checkCloseCell(others, p) {
     this.closeCells = [];
-
     this.util.checkNearObj(others, this.closeCells, this);
-    //console.log(this.closeCells);
-
-    // 연결 선
     p.stroke(0, 255, 255);
-    this.closeCells.forEach((other) => {
-      p.line(this.x, this.y, other.x, other.y);
-    });
-    this.checkCellGoaway();
   }
 
-  applySpacingForce() {
-    const strength = 0.001;
+  applySpacingForce(allCells, strength) {
+    allCells.forEach((other) => {
+      if (this === other) return;
 
-    this.closeCells.forEach((other) => {
-      const minDist = this.health * 2;
-      const maxDist = other.health;
-      const dist = this.util.dist(other.x, other.y, this.x, this.y);
-
+      const dist = this.util.dist(this.x, this.y, other.x, other.y);
       if (dist === 0) return;
 
-      if (dist < minDist) {
-        const diff = minDist - dist;
-        this.util.towards(this, strength * diff, other, false); // 밀어냄
-      } else if (dist > maxDist) {
-        const diff = dist - maxDist;
-        this.util.towards(this, strength * diff, other, true); // 끌어당김
+      const sameGroup =
+        this.inGroup && other.inGroup && this.groupId === other.groupId;
+
+      if (!sameGroup) {
+        if (dist < this.health * 2) {
+          this.util.towards(
+            this,
+            strength * (this.health * 2 - dist),
+            other,
+            false,
+          );
+        }
+        return;
+      }
+
+      if (dist > this.health) {
+        this.util.towards(this, strength * (dist - this.health), other, true);
       }
     });
   }
@@ -109,5 +117,24 @@ export default class Cell {
 
     p.stroke(0, 0, 255); // 파란색 선
     p.line(closeArr[1].x, closeArr[1].y, closeArr[3].x, closeArr[3].y);
+  }
+
+  fearAction() {
+    if (this.closeEnemies.length > 0) {
+      this.fear += 0.1;
+      this.closeEnemies.forEach((enemy) =>
+        this.util.towards(this, 1, enemy, false),
+      );
+    } else {
+      if (this.fear > 0) {
+      }
+      this.fear -= 0.1;
+    }
+
+    if (this.fear > 0) {
+      this.color = [0, 255, 255];
+    } else {
+      this.color = [255, 255, 255];
+    }
   }
 }
