@@ -8,8 +8,10 @@ export default class Cell {
     // 위치 및 생명력
     this.x = x;
     this.y = y;
-    this.character = Math.floor(Math.random() * 10);
+    this.character = 10;
+    //Math.floor(Math.random() * 10);
     this.health = 10 * this.character;
+    this.near = 200;
 
     // 내부 상태
     this.curiosity = 0;
@@ -29,7 +31,6 @@ export default class Cell {
   }
 
   update() {
-    this.checkEnemyGoaway();
     this.applySpacingForce();
     this.fearAction();
   }
@@ -37,60 +38,53 @@ export default class Cell {
   fearAction() {
     if (this.closeEnemies.length > 0) {
       this.fear += 0.1;
+      this.closeEnemies.forEach((enemy) =>
+        this.util.towards(this, 0.1, enemy, false),
+      );
+    } else {
+      if (this.fear > 0) {
+      }
+      this.fear -= 0.1;
     }
 
     if (this.fear > 0) {
-      this.closeEnemies.forEach((enemy) =>
-        this.util.towards(this, 100, enemy, false),
-      );
       this.color = [0, 255, 255];
     } else {
       this.color = [255, 255, 255];
     }
   }
-
-  checkCloseEnemy(enemies) {
-    enemies.forEach((enemy) => {
-      const d = p5.prototype.dist(this.x, this.y, enemy.x, enemy.y);
-      if (d < 10) {
-        this.closeEnemies.push(enemy);
-      }
-    });
-  }
-
   checkEnemyGoaway() {
-    this.closeEnemies = this.closeEnemies.filter((enemy) => {
-      const d = p5.prototype.dist(this.x, this.y, enemy.x, enemy.y);
-      return d <= 10;
-    });
+    this.util.checkObjGoaway(this.closeEnemies);
+  }
+  checkCellGoaway() {
+    this.util.checkObjGoaway(this.closeCells);
+  }
+  checkCloseEnemy(enemies) {
+    this.closeEnemies = [];
+
+    this.util.checkNearObj(enemies, this.closeEnemies, this);
+    this.checkEnemyGoaway();
   }
 
   checkCloseCell(others, p) {
     this.closeCells = [];
-    let mostFar = 0;
 
-    others.forEach((other) => {
-      if (this !== other) {
-        const d = p.dist(this.x, this.y, other.x, other.y);
-        if (d < other.health * 3) {
-          this.closeCells.push(other);
-          if (d > mostFar) mostFar = d;
-        }
-      }
-    });
+    this.util.checkNearObj(others, this.closeCells, this);
+    //console.log(this.closeCells);
 
     // 연결 선
-    p.stroke(0, 0, 255);
+    p.stroke(0, 255, 255);
     this.closeCells.forEach((other) => {
-      //  p.line(this.x, this.y, other.x, other.y);
+      p.line(this.x, this.y, other.x, other.y);
     });
+    this.checkCellGoaway();
   }
 
   applySpacingForce() {
     const strength = 0.001;
 
     this.closeCells.forEach((other) => {
-      const minDist = this.health;
+      const minDist = this.health * 2;
       const maxDist = other.health;
       const dist = this.util.dist(other.x, other.y, this.x, this.y);
 
@@ -107,19 +101,13 @@ export default class Cell {
   }
 
   drawLeg(backCircleArray, p) {
-    const { closest, secondClosest } = this.util.closestObj(
-      backCircleArray,
-      this,
-    );
-    console.log('a: ', closest, 'b: ', secondClosest);
-    if (closest) {
-      p.stroke(0); // 검은색 선
-      p.line(this.x, this.y, closest.x, closest.y);
-    }
+    const closeArr = this.util.closestObj(backCircleArray, this);
+    //console.log('a: ', closest, 'b: ', secondClosest);
 
-    if (closest && secondClosest) {
-      p.stroke(0, 0, 255); // 파란색 선
-      p.line(closest.x, closest.y, secondClosest.x, secondClosest.y);
-    }
+    p.stroke(0); // 검은색 선
+    p.line(this.x, this.y, closeArr[1].x, closeArr[1].y);
+
+    p.stroke(0, 0, 255); // 파란색 선
+    p.line(closeArr[1].x, closeArr[1].y, closeArr[3].x, closeArr[3].y);
   }
 }
