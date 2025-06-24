@@ -16,6 +16,7 @@
     "@astrojs/ts-plugin": "^1.10.4",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
+    "pixi.js": "^8.10.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-p5": "^1.4.1"
