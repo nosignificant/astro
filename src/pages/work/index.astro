@@ -1,7 +1,18 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro';
+import { postFilter } from '../../lib/data/postFilter';
+
+const workPost = postFilter('work');
+console.log('isthis working', ...workPost);
 ---
 
 <MainLayout>
-  <div>만드는중</div>
+  {
+    workPost.map((post) => (
+      <a href={post.url}>
+        <img class="w-[300px] h-[200px]" src={`/img/work/${post.title}.png`} />
+        {post.title}
+      </a>
+    ))
+  }
 </MainLayout>

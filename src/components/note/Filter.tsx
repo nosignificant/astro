@@ -1,6 +1,7 @@
 import { notePosts } from '../../lib/utils/note-post';
 import { useState, useEffect } from 'react';
 import FilterPost from './FilterPost';
+import { postFilter } from '../../lib/data/postFilter';
 
 export default function Filter() {
   const { posts, tagsSet } = notePosts();
