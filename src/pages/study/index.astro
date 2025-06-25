@@ -18,7 +18,7 @@ const posts = studyPosts();
         return (
           <div>
             {/* 상위 폴더 */}
-            <div class=" backBlack entry-row border-b">
+            <div class="  entry-row border-b">
               <a href={group.parentUrl} class="flex-1 truncate ">
                 {group.folder}
               </a>
@@ -31,7 +31,7 @@ const posts = studyPosts();
             {group.children.length > 0 && !hasSelfAsChild && (
               <div class="pl-4 ">
                 {group.children.map((child) => (
-                  <div class="entry-row backBlack border-l border-gray-400">
+                  <div class="entry-row border-l border-gray-400">
                     <a href={child.url} class="flex-1 truncate ">
                       {child.title}
                     </a>{' '}
