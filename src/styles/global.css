@@ -13,13 +13,21 @@
   src: url('/fonts/Pretendard-Light.otf') format('opentype');
 }
 @font-face {
-  font-family: 'Backslanted';
-  src: url('/fonts/Backslanted-Regular-v02-Web.ttf') format('truetype');
+  font-family: 'PretendardB';
+  src: url('/fonts/Pretendard-Medium.otf') format('opentype');
+}
+@font-face {
+  font-family: 'Orbit';
+  src: url('/fonts/Orbit-Regular.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Consolas';
   src: url('/fonts/consola.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'IBMPlex';
+  src: url('/fonts/IBMPlexSansKR-Medium.ttf') format('truetype');
 }
 
 * {
@@ -28,9 +36,9 @@
 }
 
 body {
-  font-family: 'Pretendard', serif;
+  font-family: 'PretendardB', serif;
 
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(255, 255, 255);
   margin: 0;
   padding: 0;
 }
@@ -66,7 +74,11 @@ pre span {
 }
 
 .entry-row {
-  @apply pl-2 flex justify-between items-center gap-4 py-2;
+  @apply pl-2 flex justify-between items-center gap-4 py-2  border-gray-400;
+}
+
+.backBlack {
+  @apply hover:text-white hover:bg-black;
 }
 
 .prose p,
@@ -76,12 +88,34 @@ pre span {
   line-height: 1.8;
 }
 
+.prose p,
+.prose ul,
+.prose ol,
+.prose li {
+  font-family: Pretendard;
+}
 .prose h1,
 h2,
 h3 {
-  font-family: Arita-buri;
+  font-family: IBMPlex;
 }
 
-.Backslanted {
-  font-family: Backslanted !important;
+.Pretendard {
+  font-family: Pretendard !important;
+}
+.Orbit {
+  font-family: Orbit !important;
+  letter-spacing: -0.2px;
+}
+
+.Arita-buri {
+  font-family: Arita-buri !important;
+}
+
+.consolas {
+  font-family: Consolas !important;
+}
+
+.PretendardB {
+  font-family: PretendardB !important;
 }

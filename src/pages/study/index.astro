@@ -1,13 +1,13 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro';
 import '../../styles/global.css';
-import { studyPosts, type StudyGroup } from '../../lib/utils/study-post';
+import { studyPosts } from '../../lib/utils/study-post';
 
 const posts = studyPosts();
 ---
 
 <MainLayout>
-  <div class="flex flex-col divide-y">
+  <div class="flex flex-col">
     {
       //자식이 있는지 없는지 확인
       posts.map((group) => {
@@ -18,23 +18,23 @@ const posts = studyPosts();
         return (
           <div>
             {/* 상위 폴더 */}
-            <div class="entry-row hover:bg-white">
-              <a href={group.parentUrl} class="flex-1 truncate">
+            <div class=" backBlack entry-row border-b">
+              <a href={group.parentUrl} class="flex-1 truncate ">
                 {group.folder}
               </a>
-              <div class="text-gray-500 hidden sm:block pr-4">
+              <div class="text-gray-500 hidden sm:block pr-4 Orbit ">
                 {group.folderStartDate}
               </div>
             </div>
 
-            {/* 자식 파일 */}
+            {/* group 길이가 1 이상이고 자식이 없을 때 */}
             {group.children.length > 0 && !hasSelfAsChild && (
-              <div class="pl-4 border-l border-gray-300 ">
+              <div class="pl-4 ">
                 {group.children.map((child) => (
-                  <div class="entry-row hover:bg-white">
+                  <div class="entry-row backBlack border-l border-gray-400">
                     <a href={child.url} class="flex-1 truncate ">
                       {child.title}
-                    </a>
+                    </a>{' '}
                   </div>
                 ))}
               </div>

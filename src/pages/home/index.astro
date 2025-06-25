@@ -1,19 +1,25 @@
 ---
+import { format } from 'date-fns';
+
 import '../../styles/global.css';
 import Footer from '../../components/Footer.astro';
 import BaseHead from '../../components/BaseHead.astro';
 import { Menus } from '../../lib/data/menus';
-import P5Sketch from '../../components/cell/p5sketch.jsx';
 import FooterNavi from '../../components/FooterNavi.astro';
 
 const posts = Object.entries(
   import.meta.glob('../../content/**/*.md', { eager: true }),
-).map(([path, module]: [string, any]) => {
-  const slug = path.replace('../../content', '').replace(/\.md$/, '');
-  const parts = slug.split('/').filter(Boolean);
-  const urls = `/${parts[0]}/${parts[1]}`;
-  return { title: parts[1], part: parts[0], url: urls };
-});
+)
+  .map(([path, module]: [string, any]) => {
+    const slug = path.replace('../../content', '').replace(/\.md$/, '');
+    const parts = slug.split('/').filter(Boolean);
+    const urls = `/${parts[0]}/${parts[1]}`;
+    const dateObj = new Date(module.frontmatter.date);
+    return { title: parts[1], part: parts[0], date: dateObj, url: urls };
+  })
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .map((post) => ({ ...post, date: format(post.date, 'yyyy-MM-dd') }));
+console.log('post date', [...posts]);
 //
 ---
 
@@ -22,13 +28,10 @@ const posts = Object.entries(
     <BaseHead />
   </head>
   <body>
-    <img src="/img/name.png" class="block w-auto scale-y-75" alt="" />
-    <div class="flex justify-center z-1 text-lg">
-      <div
-        class="w-full lg:text-sm max-w-4xl px-[30px] lg:ml-[100px] lg:mr-[100px]"
-      >
-        <div class="mt-[100px]">
-          <div class="mt-[10px]"></div>
+    <img src="/img/name.png" />
+    <div class="flex z-1 text-lg">
+      <div class="w-full lg:text-sm px-[30px] lg:ml-[200px] lg:mr-[200px]">
+        <div class="mt-[50px]">
           <div class="flex flex-col">
             <div>
               {
@@ -36,26 +39,33 @@ const posts = Object.entries(
                   if (menu.name != 'nosignificant')
                     return (
                       <div>
-                        <div class="flex flex-row mb-1 mt-4 ">
-                          {' '}
-                          <a class="hover:bg-white" href={menu.url}>
+                        <div>
+                          <a
+                            class="Orbit gap-2 inline-block pb-2
+                            flex flex-auto w-auto h-auto  flex-row backBlack  text-lg"
+                            href={menu.url}
+                          >
                             {menu.name}
+                            <div class="pretendard text-gray-400 pt-1 text-sm">
+                              {menu.description}
+                            </div>
                           </a>
-                          <div class="pl-4 text-gray-400">
-                            {menu.description}
-                          </div>
                         </div>
 
-                        <div class="flex flex-col border-l border-gray-600 ">
+                        <div class="flex flex-col pl-4 border-t border-gray-400 ">
                           {posts
                             .filter((post) => post.part === menu.name)
                             .slice(0, 2)
                             .map((post) => (
                               <a
-                                class="mt-1 mb-1 ml-4 hover:bg-white"
+                                class=" backBlack flex flex-row entry-row backBlack  border-l border-gray-400"
                                 href={post.url}
                               >
                                 {post.title}
+
+                                <div class="text-gray-400 Orbit ">
+                                  {post.date}
+                                </div>
                               </a>
                             ))}
                         </div>

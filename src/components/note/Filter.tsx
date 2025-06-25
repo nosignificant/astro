@@ -1,7 +1,6 @@
-import { notePosts } from '../lib/utils/note-post';
+import { notePosts } from '../../lib/utils/note-post';
 import { useState, useEffect } from 'react';
-
-let filterTag = [];
+import FilterPost from './FilterPost';
 
 export default function Filter() {
   const { posts, tagsSet } = notePosts();
@@ -44,14 +43,14 @@ export default function Filter() {
 
   return (
     <div className="flex flex-col">
-      <div className="flex flex-wrap gap-1">
+      <div className="flex flex-wrap gap-1 ">
         {tagsSet.map((tag) => {
           const isSelected = selectedTag.includes(tag) && !firstSelected;
           return (
             <button
               key={tag}
-              className={`flex flex-row pr-4 pl-4 pd-2 rounded-[30px] border 
-        ${isSelected ? 'border-black bg-white' : 'border-black hover:bg-white'}`}
+              className={`flex flex-row pr-4 pl-4 rounded-[30px] border Orbit
+        ${isSelected ? 'border-black bg-black text-white' : 'border-black hover:bg-black hover:text-white'}`}
               onClick={() => tagClicked(tag)}
             >
               {tag}
@@ -66,23 +65,7 @@ export default function Filter() {
         </a>
       </div>
       <div className="mb-4" />
-      <div className="divide-y">
-        {postFilter().map(({ url, title, date, tags }) => (
-          <div key={url} className="entry-row hover:bg-white">
-            <a href={url} className="flex-1 truncate ">
-              {title}
-              <div className="flex flex-row">
-                {tags.map((tag) => (
-                  <div key={tag} className="text-gray-500 text-sm pr-2 ">
-                    {tag}
-                  </div>
-                ))}
-              </div>
-            </a>
-            <div className="text-gray-500 hidden sm:block pr-4">{date}</div>
-          </div>
-        ))}
-      </div>
+      <FilterPost postFilter={postFilter} />
     </div>
   );
 }

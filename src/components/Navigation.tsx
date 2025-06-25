@@ -19,7 +19,7 @@ export default function Navigation({ currentPath, Menus }: NavigationProps) {
 
   return (
     <div>
-      <div className="flex flex-row">
+      <div className="flex flex-row Orbit">
         {Menus.map((menu) => (
           <div
             key={menu.url}
