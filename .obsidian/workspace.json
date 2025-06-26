@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/note/히스토리에, 알렉산드로스 제국의 눈물, 유레카, 한니발 전기를 읽고.md",
+                "file": "src/content/study/생물_만들어보기/생물_만들어보기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "히스토리에, 알렉산드로스 제국의 눈물, 유레카, 한니발 전기를 읽고"
+              "title": "생물_만들어보기"
             }
           }
         ]
@@ -170,8 +170,13 @@
   },
   "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
-    "src/content/study/글자 피아노 만들기.md",
+    "src/content/study/생물_만들어보기/6월 3주.md",
+    "src/content/study/생물_만들어보기/생물_만들어보기.md",
+    "src/content/study/web-development/web-development.md",
+    "src/content/study/web-development/0531.md",
+    "src/content/study/web-development/6월 3주.md",
     "src/content/note/히스토리에, 알렉산드로스 제국의 눈물, 유레카, 한니발 전기를 읽고.md",
+    "src/content/study/글자 피아노 만들기.md",
     "src/content/note/맨날까먹음.md",
     "public/img/note/eureka.jpeg",
     "public/img/note/IMG_3951F2A1D232-1.jpeg",
@@ -192,7 +197,6 @@
     "public/img/study",
     "public/img/스크린샷 2025-06-24 오후 11.49.05.png",
     "src/content/study/brick-break.md",
-    "src/content/study/생물_만들어보기/6월 3주.md",
     "public/img/name.png",
     "public/img/Asset 1.png",
     "public/fonts/Backslanted-Regular-v02-Web.ttf",
@@ -200,13 +204,10 @@
     "public/fonts/Pretendard-Light.otf",
     "public/fonts/CanonGrotesqueV0.1Trial-Medium.otf",
     "().md",
-    "src/content/study/생물_만들어보기/생물_만들어보기.md",
-    "src/content/study/web-development/web-development.md",
     "1x/Asset 1.png",
     "1x",
     "public/fonts/AritaSans-Medium.otf",
     "public/fonts/Arita-buriB.otf",
-    "src/content/study/web-development/6월 3주.md",
     "node_modules/@types/p5/README.md",
     "node_modules/p5/translations/ko/README.md",
     "node_modules/p5/README.md",
@@ -214,7 +215,6 @@
     "node_modules/opencollective-postinstall/README.md",
     "node_modules/react-p5/README.md",
     "node_modules/react-p5/CODE_OF_CONDUCT.md",
-    "node_modules/react-p5/CHANGELOG.md",
-    "src/content/study/web-development/0601,  0615, 0618.md"
+    "node_modules/react-p5/CHANGELOG.md"
   ]
 }
