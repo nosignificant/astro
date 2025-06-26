@@ -1,31 +1,28 @@
-import { notePosts } from '../../lib/utils/note-post';
 import { useState, useEffect } from 'react';
 import FilterPost from './FilterPost';
 import { postFilter } from '../../lib/data/postFilter';
 
 export default function Filter() {
-  const { posts, tagsSet } = notePosts();
+  const { allPosts: notePosts, tagsSet } = postFilter('note');
+
   const [selectedTag, setSelectedTag] = useState<string[]>(tagsSet); // 초기에는 전체 보이게
   const [firstSelected, setFirstSelected] = useState(true);
 
   useEffect(() => {
     if (!firstSelected && selectedTag.length === 0) {
       setSelectedTag(tagsSet);
+      console.log('useEffect', ...selectedTag);
       setFirstSelected(true);
     }
   }, [firstSelected, selectedTag]);
 
+  useEffect(() => {
+    console.log('useEffect', ...selectedTag);
+  }, [selectedTag]);
+
   function clearTags() {
     setFirstSelected(true);
     setSelectedTag(tagsSet); // 전체 보기
-  }
-
-  function postFilter() {
-    const filteredPosts = posts.filter((post) =>
-      selectedTag.some((tag) => post.tags.includes(tag)),
-    );
-    //console.log("selected tag", [...selectedTag]);
-    return filteredPosts;
   }
 
   const tagClicked = (tag: string) => {
@@ -42,6 +39,13 @@ export default function Filter() {
     });
   };
 
+  function postFilterbyTags() {
+    const filteredPosts = notePosts.filter((post) =>
+      selectedTag.some((tag) => post.tags.includes(tag)),
+    );
+    //console.log("selected tag", [...selectedTag]);
+    return filteredPosts;
+  }
   return (
     <div className="flex flex-col">
       <div className="flex flex-wrap gap-1 ">
@@ -66,7 +70,8 @@ export default function Filter() {
         </a>
       </div>
       <div className="mb-4" />
-      <FilterPost postFilter={postFilter} />
+      <FilterPost postFilter={postFilterbyTags} />
     </div>
   );
 }
+//

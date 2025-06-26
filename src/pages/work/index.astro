@@ -1,26 +1,26 @@
 ---
+import { map } from 'astro:schema';
 import GalleryLayout from '../../layouts/gallery-layout.astro';
 import MainLayout from '../../layouts/main-layout.astro';
 import { postFilter } from '../../lib/data/postFilter';
 
-const workPost = postFilter('work');
+const { allPosts: workPosts, tagsSet } = postFilter('work');
 ---
 
 <GalleryLayout pageTitle={'work'}>
   <div class="flex flex-wrap gap-4">
     {
-      workPost.map((post) => (
-        <a href={post.url}>
+      workPosts.map(({ url, title, date, tags }) => (
+        <a href={url}>
           <img
             class="w-[300px] h-[200px]  object-cover block"
-            src={`/img/work/${post.title}.png`}
+            src={`/img/work/${title}.png`}
           />
-          {console.log(post.title)}
-          <div class="mt-1 mb-1 text-lg"> {post.title}</div>
-          <div class="Orbit text-gray-500 text-xs">{post.frontmatter.tags}</div>
+          {console.log(title)}
+          <div class="mt-1 mb-1 text-lg"> {title}</div>
+          <div class="Orbit text-gray-500 text-xs">{tags}</div>
         </a>
       ))
     }
   </div>
 </GalleryLayout>
-~
