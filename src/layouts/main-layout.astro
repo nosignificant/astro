@@ -14,17 +14,18 @@ const currentPath = Astro.url.pathname;
   <head>
     <BaseHead pageTitle={pageTitle} />
   </head>
-  <body class="flex justify-center">
-    <div class="w-full text-sm max-w-3xl px-[30px] lg:ml-[200px] lg:mr-[200px]">
-      <div class="mt-[100px]"></div>
+  <body class="w-full flex items-center flex-col">
+    <div class="mt-[100px]"></div>
+    <div class="sm:w-[700px] w-[300px] w-full flex-col px-[30px]">
       <h1 class="text-3xl mb-4">{pageTitle}</h1>
       <Navigation client:load currentPath={currentPath} Menus={Menus} />
-      <main>
-        <slot />
-      </main>
-      <div class="mt-[100px]"></div>
+      <div class="w-full text-sm">
+        <main>
+          <slot />
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   </body>
 </html>
