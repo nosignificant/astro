@@ -1,12 +1,12 @@
 ---
+import GalleryLayout from '../../layouts/gallery-layout.astro';
 import MainLayout from '../../layouts/main-layout.astro';
 import { postFilter } from '../../lib/data/postFilter';
 
 const workPost = postFilter('work');
-console.log('isthis working', ...workPost);
 ---
 
-<MainLayout>
+<GalleryLayout pageTitle={'work'}>
   <div class="flex flex-wrap gap-4">
     {
       workPost.map((post) => (
@@ -16,10 +16,11 @@ console.log('isthis working', ...workPost);
             src={`/img/work/${post.title}.png`}
           />
           {console.log(post.title)}
-          <div class="mt-1 mb-1"> {post.title}</div>
+          <div class="mt-1 mb-1 text-lg"> {post.title}</div>
+          <div class="Orbit text-gray-500 text-xs">{post.frontmatter.tags}</div>
         </a>
       ))
     }
   </div>
-</MainLayout>
+</GalleryLayout>
 ~

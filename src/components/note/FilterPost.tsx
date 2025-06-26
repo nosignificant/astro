@@ -7,7 +7,7 @@ export default function FilterPost({ postFilter }) {
             {title}
             <div className="flex flex-row">
               {tags.map((tag) => (
-                <div key={tag} className="text-gray-500 text-sm pr-2 Orbit">
+                <div key={tag} className="text-gray-500 text-xs pr-2 Orbit">
                   {tag}
                 </div>
               ))}

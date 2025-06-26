@@ -1,7 +1,7 @@
 import { format } from 'date-fns';
 
 export function postFilter(category: string) {
-  const allPosts = Object.entries(
+  let allPosts = Object.entries(
     import.meta.glob('../../content/**/*.md', { eager: true }),
   )
     .filter(([path, _module]) => path.includes(`/${category}/`))
@@ -16,10 +16,16 @@ export function postFilter(category: string) {
         frontmatter: frontmatter,
       };
     });
+
+  allPosts = filterDate(allPosts);
+  allPosts = postTags(allPosts);
+  console.log('is this working', ...allPosts);
   return allPosts;
 }
 
-function filterDate(allPosts: { title: string; frontmatter: any }[]) {
+function filterDate(
+  allPosts: { title: string; url: string; frontmatter: any }[],
+) {
   return allPosts
     .map((post) => ({
       ...post,
@@ -27,4 +33,13 @@ function filterDate(allPosts: { title: string; frontmatter: any }[]) {
       formattedDate: format(new Date(post.frontmatter.date), 'yyyy-MM-dd'),
     }))
     .sort((a, b) => b.date.getTime() - a.date.getTime());
+}
+
+function postTags(
+  allPosts: { title: string; url: string; frontmatter: any }[],
+) {
+  return allPosts.map((post) => ({
+    ...post,
+    tags: Array.isArray(post.frontmatter.tags) ? post.frontmatter.tags : [],
+  }));
 }
