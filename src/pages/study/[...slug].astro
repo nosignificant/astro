@@ -1,6 +1,7 @@
 ---
 import MainLayout from '../../layouts/main-layout.astro';
 import FooterNavi from '../../components/FooterNavi.astro';
+import PageLayout from '../../layouts/page-layout.astro';
 export async function getStaticPaths() {
   const modules = import.meta.glob('../../content/study/**/*.md', {
     eager: true,
@@ -20,11 +21,11 @@ export async function getStaticPaths() {
 const { title, Content, description } = Astro.props;
 ---
 
-<MainLayout pageTitle={title} description={description}>
+<PageLayout pageTitle={title} description={description}>
   <article class="prose max-w-none">
     <Content />
   </article>
   <div class="mt-[100px]"></div>
 
   <FooterNavi />
-</MainLayout>
+</PageLayout>

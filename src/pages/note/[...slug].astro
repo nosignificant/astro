@@ -2,6 +2,7 @@
 import MainLayout from '../../layouts/main-layout.astro';
 import FooterNavi from '../../components/FooterNavi.astro';
 import PostFrontBack from '../../components/PostFrontBack.astro';
+import PageLayout from '../../layouts/page-layout.astro';
 
 export async function getStaticPaths() {
   const modules = import.meta.glob('../../content/note/**/*.md', {
@@ -25,7 +26,7 @@ const { title, Content, description } = Astro.props;
 const { slug } = Astro.params;
 ---
 
-<MainLayout pageTitle={title} description={description}>
+<PageLayout pageTitle={title} description={description}>
   <article class="prose max-w-none">
     <Content />
   </article>
@@ -33,4 +34,4 @@ const { slug } = Astro.params;
   <div class="mt-[100px]"></div>
 
   <FooterNavi />
-</MainLayout>
+</PageLayout>
