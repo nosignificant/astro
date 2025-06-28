@@ -170,6 +170,10 @@
   },
   "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
+    "src/content.config.ts",
+    "src/config.ts",
+    "src/content/config.ts",
+    "src/content/study/sdf.md",
     "src/content/study/web-development/web-development.md",
     "src/content/study/생물_만들어보기/튜플, 객체, 2차원 배열.md",
     "src/content/study/생물_만들어보기/6월 3주.md",
@@ -208,13 +212,9 @@
     "img/work/문명장례/79.png.md",
     "src/content/work/mmm.md",
     "src/content/work/m.md",
-    "img/work/문명장례/62.png.md",
     "img/work/문명장례",
     "img/work",
     "img",
-    "public/img/work/문명장례",
-    "public/img/문명장례/4x/Artboard 115@4x.png.tmp$$",
-    "public/img/문명장례/4x/Artboard 114@4x.png.tmp$$",
-    "src/content/study/web-development/0531.md"
+    "public/img/work/문명장례"
   ]
 }
