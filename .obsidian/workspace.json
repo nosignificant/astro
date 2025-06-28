@@ -170,6 +170,11 @@
   },
   "active": "a54d0778fb1eca21",
   "lastOpenFiles": [
+    "public/img/name.png",
+    "public/name.png",
+    "name.png",
+    "1x/name.png",
+    "1x/Asset 5.png",
     "src/content.config.ts",
     "src/config.ts",
     "src/content/config.ts",
@@ -187,13 +192,9 @@
     "public/img/studyPiano.png",
     "public/img/6m4w.png",
     "public/studyPiano.png",
-    "public/6m4w.png",
     "src/content/work/문명장례.md",
     "src/content/work/piano.md",
     "src/content/study/web-development/6월 3주.md",
-    "img/study/6m4w.png",
-    "img/study/64.png",
-    "img/study/studyPiano.png",
     "img/study/스크린샷 2025-06-24 오후 11.49.05.png.md",
     "img/study",
     "img/무제 폴더",
@@ -214,7 +215,6 @@
     "src/content/work/m.md",
     "img/work/문명장례",
     "img/work",
-    "img",
-    "public/img/work/문명장례"
+    "img"
   ]
 }
